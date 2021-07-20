@@ -1,0 +1,4 @@
+#!/bin/sh
+
+./bin/php-cs-fixer fix --dry-run
+./bin/static_analysis

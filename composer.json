@@ -1,0 +1,63 @@
+{
+    "name": "rich-id/design-customization-bundle",
+    "description": "Design customization bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RichId",
+            "homepage": "https://www.rich-id.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3|^8.0",
+        "doctrine/migrations": "^3.0",
+        "doctrine/orm": "^2.7",
+        "fresh/doctrine-enum-bundle": "^6.6||^7.1",
+        "richcongress/bundle-toolbox": "^1.1",
+        "sensio/framework-extra-bundle": "^5.0|^6.0",
+        "symfony/cache": "^4.0|^5.0",
+        "symfony/twig-bundle": "^4.0|^5.0"
+    },
+    "require-dev": {
+        "doctrine/doctrine-bundle": "^2.0",
+        "phpunit/phpunit": "^9.5",
+        "richcongress/static-analysis": "^0.1",
+        "richcongress/test-suite": "^0.1",
+        "roave/security-advisories": "dev-latest"
+    },
+    "autoload": {
+        "psr-4": {
+            "RichId\\DesignCustomizationBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RichId\\DesignCustomizationBundle\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin",
+        "discard-changes": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || cghooks add --ignore-lock"
+        ],
+        "post-update-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 0 ] || cghooks update"
+        ]
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": [
+                "./bin/php-cs-fixer fix"
+            ],
+            "pre-push": [
+                "./bin/php-cs-fixer fix --dry-run",
+                "./bin/static_analysis"
+            ]
+        }
+    }
+}

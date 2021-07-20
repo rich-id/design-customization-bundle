@@ -1,0 +1,67 @@
+<?php
+
+declare(strict_types=1);
+
+namespace RichId\DesignCustomizationBundle\Domain\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository")
+ * @ORM\Table(name="module_design_customization_email_configuration")
+ */
+class DesignConfiguration
+{
+    /**
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\Column(type="integer", name="id", options={"unsigned":true})
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false, length=255, unique=true, name="slug")
+     */
+    protected $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=false, length=255, unique=true, name="name")
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="DesignConfigurationType", nullable=false, name="type")
+     */
+    protected $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true, name="value")
+     */
+    protected $value;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=false, name="default_value")
+     */
+    protected $defaultValue;
+
+    public function getValueToUse(): string
+    {
+        if ($this->value !== null && $this->value !== '') {
+            return $this->value;
+        }
+
+        return $this->defaultValue;
+    }
+}
