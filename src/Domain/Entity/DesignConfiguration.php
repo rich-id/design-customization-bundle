@@ -8,7 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository")
- * @ORM\Table(name="module_design_customization_email_configuration")
+ * @ORM\Table(
+ *     name="module_design_customization_configuration",
+ *     uniqueConstraints={
+ *         @ORM\UniqueConstraint(name="design_configuration_type_position_UNIQUE", columns={"type", "position"}),
+ *     }
+ * )
  */
 class DesignConfiguration
 {
@@ -43,18 +48,60 @@ class DesignConfiguration
     protected $type;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer", nullable=false, name="position", options={"unsigned":true})
+     */
+    protected $position = 0;
+
+    /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=true, name="value")
+     * @ORM\Column(type="string", length=600, nullable=true, name="value")
      */
     protected $value;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255, nullable=false, name="default_value")
+     * @ORM\Column(type="string", length=600, nullable=false, name="default_value")
      */
     protected $defaultValue;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    public function getPosition(): int
+    {
+        return $this->position;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
+    public function getDefaultValue(): string
+    {
+        return $this->defaultValue;
+    }
 
     public function getValueToUse(): string
     {

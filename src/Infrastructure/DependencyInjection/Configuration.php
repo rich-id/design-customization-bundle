@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Infrastructure\DependencyInjection;
 
@@ -11,5 +13,13 @@ class Configuration extends AbstractConfiguration
 
     protected function buildConfig(NodeBuilder $rootNode): void
     {
+        $this->cssCustomizationPrefix($rootNode);
+    }
+
+    protected function cssCustomizationPrefix(NodeBuilder $nodeBuilder): void
+    {
+        $nodeBuilder
+            ->scalarNode('css_customization_prefix')
+            ->defaultValue('rich-id-customization');
     }
 }

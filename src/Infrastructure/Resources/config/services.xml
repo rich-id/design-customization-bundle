@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults autowire="true" autoconfigure="true" public="false"/>
+        <service id="RichId\DesignCustomizationBundle\Domain\Port\EntityGetterInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\EntityGetter"/>
+
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfiguration" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue" />
+
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\EntityGetter" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Cache\DesignConfigurationCache" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository" />
+
+        <service id="RichId\DesignCustomizationBundle\UserInterface\TwigExtension\DesignCustomizationExtension" />
+    </services>
+</container>

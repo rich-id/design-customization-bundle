@@ -1,0 +1,9 @@
+{% set designCustomizationPrefix = getDesignCustomizationPrefix() %}
+
+<style type="text/css">
+    :root {
+    {% for configuration in getDesignConfigurations(['color', 'radius']) %}
+        --{{ designCustomizationPrefix }}-{{ configuration.slug }}: {{ configuration.valueToUse }};
+    {% endfor %}
+    }
+</style>
