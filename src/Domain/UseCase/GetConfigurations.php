@@ -18,7 +18,7 @@ class GetConfigurations
     }
 
     /**
-     * @param string|array $types
+     * @param string|string[] $types
      *
      * @return array<string, DesignConfiguration>
      */

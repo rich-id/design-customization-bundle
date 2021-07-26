@@ -28,8 +28,7 @@ class DesignCustomizationExtension extends AbstractExtension
         GetConfiguration $getConfiguration,
         GetConfigurations $getConfigurations,
         ParameterBagInterface $parameterBag
-    )
-    {
+    ) {
         $this->getConfiguration = $getConfiguration;
         $this->getConfigurations = $getConfigurations;
         $this->parameterBag = $parameterBag;
@@ -56,7 +55,7 @@ class DesignCustomizationExtension extends AbstractExtension
     }
 
     /**
-     * @param string|array $types
+     * @param string|string[] $types
      *
      * @return array<string, DesignConfiguration>
      */
@@ -69,6 +68,7 @@ class DesignCustomizationExtension extends AbstractExtension
     {
         try {
             $configuration = ($this->getConfiguration)($configurationSlug);
+
             return $configuration->getValueToUse();
         } catch (NotFoundDesignConfigurationException $e) {
             return null;

@@ -33,6 +33,7 @@ class DesignConfigurationCache
             self::CACHE_KEY,
             function (ItemInterface $item) {
                 $item->expiresAfter(new \DateInterval(self::CACHE_LIFETIME));
+
                 return $this->getSavedConfigurations();
             }
         );
@@ -41,6 +42,7 @@ class DesignConfigurationCache
     public function getDesignConfiguration(string $configurationSlug): ?DesignConfiguration
     {
         $configurations = $this->getDesignConfigurations();
+
         return $configurations[$configurationSlug] ?? null;
     }
 
