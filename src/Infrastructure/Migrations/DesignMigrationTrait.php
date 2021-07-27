@@ -14,12 +14,14 @@ trait DesignMigrationTrait
         int $position = 1
     ): void {
         $this->addSQL("
-            INSERT INTO module_design_customization_configuration (slug, name, type, default_value, position) VALUES ('$slug', '$name', '$type', '$defaultValue', $position)
+            INSERT INTO module_design_customization_configuration
+            (slug, name, type, default_value, position, date_update)
+            VALUES (\"$slug\", \"$name\", \"$type\", \"$defaultValue\", $position, CURRENT_TIME)
         ");
     }
 
     protected function deleteDesignConfiguration(string $slug): void
     {
-        $this->addSQL("DELETE FROM module_design_customization_configuration WHERE slug = '$slug'");
+        $this->addSQL("DELETE FROM module_design_customization_configuration WHERE slug = \"$slug\"");
     }
 }

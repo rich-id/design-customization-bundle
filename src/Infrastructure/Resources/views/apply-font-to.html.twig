@@ -1,0 +1,11 @@
+{% if configurationSlug is defined and applyTo is defined %}
+    {% set fontFamily = getFontFamily(configurationSlug) %}
+
+    {% if fontFamily is not null %}
+        <style>
+            {{ applyTo }} {
+                font-family: '{{ fontFamily }}', sans-serif;
+            }
+        </style>
+    {% endif %}
+{% endif %}

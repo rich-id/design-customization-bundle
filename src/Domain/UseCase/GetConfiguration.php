@@ -6,21 +6,21 @@ namespace RichId\DesignCustomizationBundle\Domain\UseCase;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
 use RichId\DesignCustomizationBundle\Domain\Exception\NotFoundDesignConfigurationException;
-use RichId\DesignCustomizationBundle\Domain\Port\EntityGetterInterface;
+use RichId\DesignCustomizationBundle\Domain\Port\GetEntityInterface;
 
 class GetConfiguration
 {
-    /** @var EntityGetterInterface */
-    protected $entityGetter;
+    /** @var GetEntityInterface */
+    protected $getEntity;
 
-    public function __construct(EntityGetterInterface $entityGetter)
+    public function __construct(GetEntityInterface $getEntity)
     {
-        $this->entityGetter = $entityGetter;
+        $this->getEntity = $getEntity;
     }
 
     public function __invoke(string $configurationSlug): DesignConfiguration
     {
-        $configuration = $this->entityGetter->getDesignConfiguration($configurationSlug);
+        $configuration = $this->getEntity->getDesignConfiguration($configurationSlug);
 
         if (!$configuration instanceof DesignConfiguration) {
             throw new NotFoundDesignConfigurationException($configurationSlug);

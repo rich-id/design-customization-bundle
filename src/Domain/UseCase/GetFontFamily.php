@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Domain\UseCase;
 
-class GetConfigurationValue
+use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
+
+class GetFontFamily
 {
     /** @var GetConfiguration */
     protected $getConfiguration;
@@ -17,6 +19,10 @@ class GetConfigurationValue
     public function __invoke(string $configurationSlug): ?string
     {
         $configuration = ($this->getConfiguration)($configurationSlug);
+
+        if ($configuration->getType() !== DesignConfigurationType::FONT) {
+            return null;
+        }
 
         return $configuration->getValueToUse();
     }

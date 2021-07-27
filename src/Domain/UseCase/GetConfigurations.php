@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Domain\UseCase;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
-use RichId\DesignCustomizationBundle\Domain\Port\EntityGetterInterface;
+use RichId\DesignCustomizationBundle\Domain\Port\GetEntityInterface;
 
 class GetConfigurations
 {
-    /** @var EntityGetterInterface */
-    protected $entityGetter;
+    /** @var GetEntityInterface */
+    protected $getEntity;
 
-    public function __construct(EntityGetterInterface $entityGetter)
+    public function __construct(GetEntityInterface $getEntity)
     {
-        $this->entityGetter = $entityGetter;
+        $this->getEntity = $getEntity;
     }
 
     /**
@@ -25,7 +25,7 @@ class GetConfigurations
     public function __invoke($types = []): array
     {
         $types = (array) $types;
-        $configurations = $this->entityGetter->getDesignConfigurations();
+        $configurations = $this->getEntity->getDesignConfigurations();
 
         if (empty($types)) {
             return $configurations;

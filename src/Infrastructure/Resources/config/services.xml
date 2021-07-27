@@ -6,13 +6,21 @@
 
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
-        <service id="RichId\DesignCustomizationBundle\Domain\Port\EntityGetterInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\EntityGetter"/>
+        <service id="RichId\DesignCustomizationBundle\Domain\Port\GetEntityInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetEntity"/>
+        <service id="RichId\DesignCustomizationBundle\Domain\Port\GetParameterInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter"/>
+        <service id="RichId\DesignCustomizationBundle\Domain\Port\UrlGeneratorInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator"/>
 
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfiguration" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImageUrl" />
 
-        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\EntityGetter" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetEntity" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator" />
+
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Cache\DesignConfigurationCache" />
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository" />
 

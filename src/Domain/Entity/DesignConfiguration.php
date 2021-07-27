@@ -68,6 +68,13 @@ class DesignConfiguration
      */
     protected $defaultValue;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=false, name="date_update")
+     */
+    protected $dateUpdate;
+
     public function getId(): int
     {
         return $this->id;
@@ -101,6 +108,11 @@ class DesignConfiguration
     public function getDefaultValue(): string
     {
         return $this->defaultValue;
+    }
+
+    public function getDateUpdate(): \DateTime
+    {
+        return $this->dateUpdate;
     }
 
     public function getValueToUse(): string

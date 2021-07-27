@@ -1,5 +1,5 @@
 {% if configurationSlug is defined %}
-    {% set fontFamily = getFontFamilyFor(configurationSlug) %}
+    {% set fontFamily = getFontFamily(configurationSlug) %}
 
     {% if fontFamily is not null %}
         {% set fontFamilySearched = fontFamily|replace({' ': '+'}) %}

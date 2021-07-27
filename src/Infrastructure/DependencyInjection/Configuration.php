@@ -14,6 +14,7 @@ class Configuration extends AbstractConfiguration
     protected function buildConfig(NodeBuilder $rootNode): void
     {
         $this->cssCustomizationPrefix($rootNode);
+        $this->imageUploadsDir($rootNode);
     }
 
     protected function cssCustomizationPrefix(NodeBuilder $nodeBuilder): void
@@ -21,5 +22,12 @@ class Configuration extends AbstractConfiguration
         $nodeBuilder
             ->scalarNode('css_customization_prefix')
             ->defaultValue('rich-id-customization');
+    }
+
+    protected function imageUploadsDir(NodeBuilder $nodeBuilder): void
+    {
+        $nodeBuilder
+            ->scalarNode('image_uploads_dir')
+            ->defaultValue('/uploads/design');
     }
 }

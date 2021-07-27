@@ -9,7 +9,6 @@ use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 /** @extends AbstractEnumType<string> */
 class DesignConfigurationType extends AbstractEnumType
 {
-    public const EMAIL = 'email';
     public const FONT = 'font';
     public const RADIUS = 'radius';
     public const COLOR = 'color';
@@ -17,7 +16,6 @@ class DesignConfigurationType extends AbstractEnumType
 
     /** @var array<string, string> */
     protected static $choices = [
-        self::EMAIL  => 'email',
         self::FONT   => 'font',
         self::RADIUS => 'radius',
         self::COLOR  => 'color',
