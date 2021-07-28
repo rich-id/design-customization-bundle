@@ -1,0 +1,16 @@
+== Configuration
+
+Here is a sample of configuration:
+
+[source,yaml]
+----
+rich_id_design_customization:
+    admin_roles: [ ROLE_ADMIN ]
+    css_customization_prefix: my-custom-css-prefix
+    image_uploads_dir: /uploads/my-custom-directory
+----
+
+- `rich_id_design_customization.admin_roles`: Defines the roles that are allowed to manage design.
+- `rich_id_design_customization.css_customization_prefix`: Defines the prefix of the generated css variables. Default value : `rich-id-customization`
+- `rich_id_design_customization.image_uploads_dir`: Defines the path where images are stored. Default value : `/uploads/design`
+

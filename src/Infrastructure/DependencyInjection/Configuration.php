@@ -13,8 +13,17 @@ class Configuration extends AbstractConfiguration
 
     protected function buildConfig(NodeBuilder $rootNode): void
     {
+        $this->addAdminRoles($rootNode);
         $this->cssCustomizationPrefix($rootNode);
         $this->imageUploadsDir($rootNode);
+    }
+
+    protected function addAdminRoles(NodeBuilder $nodeBuilder): void
+    {
+        $nodeBuilder
+            ->arrayNode('admin_roles')
+            ->example(['ROLE_ADMIN'])
+            ->scalarPrototype();
     }
 
     protected function cssCustomizationPrefix(NodeBuilder $nodeBuilder): void

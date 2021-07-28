@@ -14,8 +14,8 @@
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath" />
-        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImageUrl" />
 
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetEntity" />
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter" />

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichId\DesignCustomizationBundle\tests\Resources\Kernel;
+namespace RichId\DesignCustomizationBundle\Tests\Resources\Kernel;
 
 use RichCongress\WebTestBundle\Kernel\DefaultTestKernel;
 

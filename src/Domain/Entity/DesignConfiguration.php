@@ -57,16 +57,16 @@ class DesignConfiguration
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=600, nullable=true, name="value")
-     */
-    protected $value;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(type="string", length=600, nullable=false, name="default_value")
      */
     protected $defaultValue;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=600, nullable=true, name="value")
+     */
+    protected $value;
 
     /**
      * @var \DateTime
@@ -100,14 +100,21 @@ class DesignConfiguration
         return $this->position;
     }
 
-    public function getValue(): ?string
-    {
-        return $this->value;
-    }
-
     public function getDefaultValue(): string
     {
         return $this->defaultValue;
+    }
+
+    public function setValue(?string $value): self
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
     }
 
     public function getDateUpdate(): \DateTime

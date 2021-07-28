@@ -11,8 +11,8 @@ use Symfony\Contracts\Cache\ItemInterface;
 
 class DesignConfigurationCache
 {
-    protected const CACHE_LIFETIME = 'PT1H';
-    protected const CACHE_KEY = 'design-configurations';
+    public const CACHE_LIFETIME = 'PT1H';
+    public const CACHE_KEY = 'design-configurations';
 
     /** @var DesignConfigurationRepository */
     protected $designConfigurationRepository;

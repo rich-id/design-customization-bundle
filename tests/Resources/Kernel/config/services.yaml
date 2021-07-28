@@ -3,3 +3,6 @@ services:
         autoconfigure: true
         autowire: true
         public: true
+
+    RichId\DesignCustomizationBundle\Tests\Resources\Fixtures\DesignConfigurationFixtures: ~
+    RichId\DesignCustomizationBundle\Tests\Resources\Fixtures\DummyUserFixtures: ~

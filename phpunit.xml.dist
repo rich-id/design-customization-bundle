@@ -35,7 +35,7 @@
             <directory>src/Infrastructure/DependencyInjection</directory>
             <directory>src/Infrastructure/Migrations</directory>
             <directory>src/Infrastructure/Resources</directory>
-            <file>src/Infrastructure/DesignCustomizationBundle.php</file>
+            <file>src/Infrastructure/RichIdDesignCustomizationBundle.php</file>
         </exclude>
     </coverage>
 

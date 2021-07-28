@@ -6,7 +6,7 @@ namespace RichId\DesignCustomizationBundle\Domain\UseCase;
 
 use RichId\DesignCustomizationBundle\Domain\Port\UrlGeneratorInterface;
 
-class GetImageUrl
+class GetImageAbsoluteUrl
 {
     /** @var GetImagePath */
     protected $getImagePath;

@@ -9,6 +9,12 @@
             "homepage": "https://www.rich-id.com"
         }
     ],
+    "support": {
+        "email": "contact@rich-id.com",
+        "source": "https://github.com/rich-id/design-customization-bundle",
+        "docs": "https://github.com/rich-id/design-customization-bundle/blob/master/README.md",
+        "issues": "https://github.com/rich-id/design-customization-bundle/issues"
+    },
     "require": {
         "php": ">=7.3|^8.0",
         "doctrine/migrations": "^3.0",
@@ -18,6 +24,9 @@
         "sensio/framework-extra-bundle": "^5.0|^6.0",
         "swiftmailer/swiftmailer": "^6.2",
         "symfony/cache": "^4.0|^5.0",
+        "symfony/routing": "^4.0|^5.0",
+        "symfony/security-bundle": "^4.0|^5.0",
+        "symfony/translation": "^4.0|^5.0",
         "symfony/twig-bundle": "^4.0|^5.0"
     },
     "require-dev": {

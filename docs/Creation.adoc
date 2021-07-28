@@ -1,0 +1,26 @@
+
+Hopefully, this operation is quite simple. The following example shoes how to insert configuration with the slug `my-slug` and the name `My Configuration`.
+
+Several types of configuration can be created: `color`, `font`, `image`, `radius`.
+
+[source, php]
+----
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+final class RandomMigration extends AbstractMigration
+{
+    public function up(Schema $schema): void
+    {
+        $this->addSQL('
+            INSERT INTO module_design_customization_configuration
+            (slug, name, type, default_value, position, date_update)
+            VALUES ("my-slug", "My Configuration", "color", "#ffffff", 1, NOW())
+        ');
+    }
+
+    public function down(Schema $schema): void
+    {
+        $this->addSQL('DELETE FROM module_design_customization_configuration WHERE slug = "my-slug"');
+}
+----

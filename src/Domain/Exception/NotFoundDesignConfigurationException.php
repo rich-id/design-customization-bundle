@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Domain\Exception;
 
-class NotFoundDesignConfigurationException extends \Exception
+class NotFoundDesignConfigurationException extends DesignCustomizationException
 {
     /** @var string */
     protected $configurationSlug;

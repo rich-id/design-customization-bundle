@@ -10,10 +10,11 @@ use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfiguration;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily;
+use RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath;
-use RichId\DesignCustomizationBundle\Domain\UseCase\GetImageUrl;
 use RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class DesignCustomizationExtension extends AbstractExtension
@@ -30,31 +31,31 @@ class DesignCustomizationExtension extends AbstractExtension
     /** @var GetFontFamily */
     protected $getFontFamily;
 
+    /** @var GetImageAbsoluteUrl */
+    protected $getImageAbsoluteUrl;
+
     /** @var GetImagePath */
     protected $getImagePath;
 
     /** @var GetParameter */
     protected $getParameter;
 
-    /** @var GetImageUrl */
-    protected $getImageUrl;
-
     public function __construct(
         GetConfiguration $getConfiguration,
         GetConfigurations $getConfigurations,
         GetConfigurationValue $getConfigurationValue,
         GetFontFamily $getFontFamily,
+        GetImageAbsoluteUrl $getImageAbsoluteUrl,
         GetImagePath $getImagePath,
-        GetParameter $getParameter,
-        GetImageUrl $getImageUrl
+        GetParameter $getParameter
     ) {
         $this->getConfiguration = $getConfiguration;
         $this->getConfigurations = $getConfigurations;
         $this->getConfigurationValue = $getConfigurationValue;
         $this->getFontFamily = $getFontFamily;
+        $this->getImageAbsoluteUrl = $getImageAbsoluteUrl;
         $this->getImagePath = $getImagePath;
         $this->getParameter = $getParameter;
-        $this->getImageUrl = $getImageUrl;
     }
 
     public function getFunctions(): array
@@ -64,10 +65,34 @@ class DesignCustomizationExtension extends AbstractExtension
             new TwigFunction('getDesignConfigurations', [$this, 'getDesignConfigurations']),
             new TwigFunction('getDesignConfigurationValue', [$this, 'getDesignConfigurationValue']),
             new TwigFunction('getDesignCustomizationPrefix', [$this, 'getDesignCustomizationPrefix']),
-            new TwigFunction('getFontFamily', [$this, 'getFontFamily']),
-            new TwigFunction('getImagePath', [$this, 'getImagePath']),
-            new TwigFunction('getImageUrl', [$this, 'getImageUrl']),
         ];
+    }
+
+    public function getFilters(): array
+    {
+        return [
+            new TwigFilter('absoluteDesignImage', [$this, 'absoluteDesignImage']),
+            new TwigFilter('designFontFamily', [$this, 'designFontFamily']),
+            new TwigFilter('pathDesignImage', [$this, 'pathDesignImage']),
+        ];
+    }
+
+    public function absoluteDesignImage(string $configurationSlug): string
+    {
+        try {
+            return ($this->getImageAbsoluteUrl)($configurationSlug);
+        } catch (NotFoundDesignConfigurationException $e) {
+            return '';
+        }
+    }
+
+    public function designFontFamily(string $configurationSlug): ?string
+    {
+        try {
+            return ($this->getFontFamily)($configurationSlug);
+        } catch (NotFoundDesignConfigurationException $e) {
+            return null;
+        }
     }
 
     public function getDesignConfiguration(string $configurationSlug): ?DesignConfiguration
@@ -103,30 +128,12 @@ class DesignCustomizationExtension extends AbstractExtension
         return $this->getParameter->getDesignCustomizationPrefix();
     }
 
-    public function getFontFamily(string $configurationSlug): ?string
-    {
-        try {
-            return ($this->getFontFamily)($configurationSlug);
-        } catch (NotFoundDesignConfigurationException $e) {
-            return null;
-        }
-    }
-
-    public function getImagePath(string $configurationSlug): ?string
+    public function pathDesignImage(string $configurationSlug): ?string
     {
         try {
             return ($this->getImagePath)($configurationSlug);
         } catch (NotFoundDesignConfigurationException $e) {
             return null;
-        }
-    }
-
-    public function getImageUrl(string $configurationSlug): string
-    {
-        try {
-            return ($this->getImageUrl)($configurationSlug);
-        } catch (NotFoundDesignConfigurationException $e) {
-            return '';
         }
     }
 }
