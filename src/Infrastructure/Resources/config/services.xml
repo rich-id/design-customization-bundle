@@ -6,7 +6,7 @@
 
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
-        <service id="RichId\DesignCustomizationBundle\Domain\Port\GetEntityInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetEntity"/>
+        <service id="RichId\DesignCustomizationBundle\Domain\Port\GetDesignConfigurationInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignConfiguration"/>
         <service id="RichId\DesignCustomizationBundle\Domain\Port\GetParameterInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter"/>
         <service id="RichId\DesignCustomizationBundle\Domain\Port\UrlGeneratorInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator"/>
 
@@ -17,7 +17,7 @@
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath" />
 
-        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetEntity" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignConfiguration" />
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter" />
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator" />
 

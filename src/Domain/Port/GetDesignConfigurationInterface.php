@@ -6,7 +6,7 @@ namespace RichId\DesignCustomizationBundle\Domain\Port;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
 
-interface GetEntityInterface
+interface GetDesignConfigurationInterface
 {
     public function getDesignConfiguration(string $configurationSlug): ?DesignConfiguration;
 

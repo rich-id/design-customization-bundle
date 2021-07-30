@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Infrastructure\Adapter;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
-use RichId\DesignCustomizationBundle\Domain\Port\GetEntityInterface;
+use RichId\DesignCustomizationBundle\Domain\Port\GetDesignConfigurationInterface;
 use RichId\DesignCustomizationBundle\Infrastructure\Cache\DesignConfigurationCache;
 
-class GetEntity implements GetEntityInterface
+class GetDesignConfiguration implements GetDesignConfigurationInterface
 {
     /** @var DesignConfigurationCache */
     protected $designConfigurationCache;

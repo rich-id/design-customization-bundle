@@ -6,14 +6,14 @@ namespace RichId\DesignCustomizationBundle\Domain\UseCase;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
 use RichId\DesignCustomizationBundle\Domain\Exception\NotFoundDesignConfigurationException;
-use RichId\DesignCustomizationBundle\Domain\Port\GetEntityInterface;
+use RichId\DesignCustomizationBundle\Domain\Port\GetDesignConfigurationInterface;
 
 class GetConfiguration
 {
-    /** @var GetEntityInterface */
+    /** @var GetDesignConfigurationInterface */
     protected $getEntity;
 
-    public function __construct(GetEntityInterface $getEntity)
+    public function __construct(GetDesignConfigurationInterface $getEntity)
     {
         $this->getEntity = $getEntity;
     }
