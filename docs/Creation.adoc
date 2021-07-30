@@ -1,5 +1,7 @@
+== Creation
 
-Hopefully, this operation is quite simple. The following example shoes how to insert configuration with the slug `my-slug` and the name `My Configuration`.
+Hopefully, this operation is quite simple.
+The following example shoes how to insert configuration with the slug `my-slug` and the name `My Configuration`.
 
 Several types of configuration can be created: `color`, `font`, `image`, `radius`.
 
@@ -22,5 +24,6 @@ final class RandomMigration extends AbstractMigration
     public function down(Schema $schema): void
     {
         $this->addSQL('DELETE FROM module_design_customization_configuration WHERE slug = "my-slug"');
+    }
 }
 ----
