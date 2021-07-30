@@ -7,15 +7,15 @@ namespace RichId\DesignCustomizationBundle\Tests\Infrastructure\Adapter;
 use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
-use RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetEntity;
+use RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignConfiguration;
 
 /**
- * @covers \RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetEntity
+ * @covers \RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignConfiguration
  * @TestConfig("fixtures")
  */
-final class GetEntityTest extends TestCase
+final class GetDesignConfigurationTest extends TestCase
 {
-    /** @var GetEntity */
+    /** @var GetDesignConfiguration */
     public $adapter;
 
     public function testGetDesignConfigurationConfigurationNotFound(): void
