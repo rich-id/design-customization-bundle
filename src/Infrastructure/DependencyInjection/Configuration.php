@@ -41,7 +41,7 @@ class Configuration extends AbstractConfiguration
             ->arrayNode('custom_fonts')
             ->normalizeKeys(false)
             ->useAttributeAsKey('key')
-            ->example(['My custom font' => 'https://my_font.test/font.css',])
+            ->example(['My custom font' => 'https://my_font.test/font.css'])
             ->scalarPrototype();
     }
 
