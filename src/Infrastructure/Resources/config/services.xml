@@ -7,6 +7,8 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
         <service id="RichId\DesignCustomizationBundle\Domain\Port\GetDesignConfigurationInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignConfiguration"/>
+
+        <service id="RichId\DesignCustomizationBundle\Domain\Port\GetDesignGoogleFontsInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignGoogleFonts"/>
         <service id="RichId\DesignCustomizationBundle\Domain\Port\GetParameterInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter"/>
         <service id="RichId\DesignCustomizationBundle\Domain\Port\UrlGeneratorInterface" alias="RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator"/>
 
@@ -14,14 +16,20 @@
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetFonts" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetGoogleFonts" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath" />
 
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignConfiguration" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetDesignGoogleFonts" />
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter" />
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator" />
 
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Cache\DesignConfigurationCache" />
+        <service id="RichId\DesignCustomizationBundle\Infrastructure\Cache\GoogleFontCache" />
+
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository" />
 
         <service id="RichId\DesignCustomizationBundle\UserInterface\TwigExtension\DesignCustomizationExtension" />

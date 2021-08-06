@@ -10,6 +10,7 @@ use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfiguration;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily;
+use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath;
 use RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter;
@@ -31,6 +32,9 @@ class DesignCustomizationExtension extends AbstractExtension
     /** @var GetFontFamily */
     protected $getFontFamily;
 
+    /** @var GetFontUrl */
+    protected $getFontUrl;
+
     /** @var GetImageAbsoluteUrl */
     protected $getImageAbsoluteUrl;
 
@@ -45,6 +49,7 @@ class DesignCustomizationExtension extends AbstractExtension
         GetConfigurations $getConfigurations,
         GetConfigurationValue $getConfigurationValue,
         GetFontFamily $getFontFamily,
+        GetFontUrl $getFontUrl,
         GetImageAbsoluteUrl $getImageAbsoluteUrl,
         GetImagePath $getImagePath,
         GetParameter $getParameter
@@ -53,6 +58,7 @@ class DesignCustomizationExtension extends AbstractExtension
         $this->getConfigurations = $getConfigurations;
         $this->getConfigurationValue = $getConfigurationValue;
         $this->getFontFamily = $getFontFamily;
+        $this->getFontUrl = $getFontUrl;
         $this->getImageAbsoluteUrl = $getImageAbsoluteUrl;
         $this->getImagePath = $getImagePath;
         $this->getParameter = $getParameter;
@@ -73,6 +79,7 @@ class DesignCustomizationExtension extends AbstractExtension
         return [
             new TwigFilter('absoluteDesignImage', [$this, 'absoluteDesignImage']),
             new TwigFilter('designFontFamily', [$this, 'designFontFamily']),
+            new TwigFilter('designFontUrl', [$this, 'designFontUrl']),
             new TwigFilter('pathDesignImage', [$this, 'pathDesignImage']),
         ];
     }
@@ -90,6 +97,15 @@ class DesignCustomizationExtension extends AbstractExtension
     {
         try {
             return ($this->getFontFamily)($configurationSlug);
+        } catch (NotFoundDesignConfigurationException $e) {
+            return null;
+        }
+    }
+
+    public function designFontUrl(string $configurationSlug): ?string
+    {
+        try {
+            return ($this->getFontUrl)($configurationSlug);
         } catch (NotFoundDesignConfigurationException $e) {
             return null;
         }

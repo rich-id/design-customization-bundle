@@ -15,6 +15,8 @@ class Configuration extends AbstractConfiguration
     {
         $this->addAdminRoles($rootNode);
         $this->cssCustomizationPrefix($rootNode);
+        $this->customFonts($rootNode);
+        $this->googleFontsApiKey($rootNode);
         $this->imageUploadsDir($rootNode);
     }
 
@@ -31,6 +33,23 @@ class Configuration extends AbstractConfiguration
         $nodeBuilder
             ->scalarNode('css_customization_prefix')
             ->defaultValue('rich-id-customization');
+    }
+
+    protected function customFonts(NodeBuilder $nodeBuilder): void
+    {
+        $nodeBuilder
+            ->arrayNode('custom_fonts')
+            ->normalizeKeys(false)
+            ->useAttributeAsKey('key')
+            ->example(['My custom font' => 'https://my_font.test/font.css',])
+            ->scalarPrototype();
+    }
+
+    protected function googleFontsApiKey(NodeBuilder $nodeBuilder): void
+    {
+        $nodeBuilder
+            ->scalarNode('google_fonts_api_key')
+            ->defaultValue('');
     }
 
     protected function imageUploadsDir(NodeBuilder $nodeBuilder): void
