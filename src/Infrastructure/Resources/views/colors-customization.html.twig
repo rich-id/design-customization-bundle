@@ -2,7 +2,7 @@
 
 <style type="text/css">
     :root {
-    {% for configuration in getDesignConfigurations(['color', 'radius']) %}
+    {% for configuration in getDesignConfigurations(['color', 'radius', 'font']) %}
         --{{ designCustomizationPrefix }}-{{ configuration.slug }}: {{ configuration.valueToUse }};
     {% endfor %}
     }
