@@ -1,2 +1,4 @@
 rich_id_design_customization:
     admin_roles: [ ROLE_ADMIN ]
+    custom_fonts:
+        'My custom font': https://test.test/fonts.css

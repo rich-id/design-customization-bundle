@@ -29,11 +29,12 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[2]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[3]);
 
-        $this->assertCount(3, $this->extension->getFilters());
+        $this->assertCount(4, $this->extension->getFilters());
 
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[0]);
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[1]);
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[2]);
+        $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[3]);
     }
 
     public function testAbsoluteDesignImageConfigurationNotFound(): void
@@ -60,6 +61,25 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertSame('My Font', $fontFamily);
     }
 
+
+    public function testDesignFontUrlConfigurationNotFound(): void
+    {
+        $fontUrl = $this->extension->designFontUrl('my_slug');
+        $this->assertNull($fontUrl);
+    }
+
+    public function testDesignFontUrlGoogle(): void
+    {
+        $fontUrl = $this->extension->designFontUrl('font-primary');
+        $this->assertSame('https://fonts.googleapis.com/css2?family=My+Font:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900', $fontUrl);
+    }
+
+    public function testDesignFontUrlcustom(): void
+    {
+        $fontUrl = $this->extension->designFontUrl('font-secondary');
+        $this->assertSame('https://test.test/fonts.css', $fontUrl);
+    }
+
     public function testGetDesignConfigurationConfigurationNotFound(): void
     {
         $configuration = $this->extension->getDesignConfiguration('my_slug');
@@ -76,21 +96,22 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertSame('color-primary', $slug);
     }
 
-    public function testUseCaseWithoutFilter(): void
+    public function testGetDesignConfigurationsWithoutFilter(): void
     {
         $configurations = $this->extension->getDesignConfigurations();
 
         $this->assertIsArray($configurations);
-        $this->assertCount(5, $configurations);
+        $this->assertCount(6, $configurations);
 
         $this->assertArrayHasKey('color-primary', $configurations);
         $this->assertArrayHasKey('color-secondary', $configurations);
         $this->assertArrayHasKey('font-primary', $configurations);
+        $this->assertArrayHasKey('font-secondary', $configurations);
         $this->assertArrayHasKey('radius-items', $configurations);
         $this->assertArrayHasKey('logo', $configurations);
     }
 
-    public function testUseCaseWithoutFilterFilterOnColor(): void
+    public function testGetDesignConfigurationsWithoutFilterFilterOnColor(): void
     {
         $configurations = $this->extension->getDesignConfigurations('color');
 

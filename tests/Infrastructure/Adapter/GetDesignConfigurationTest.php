@@ -39,11 +39,12 @@ final class GetDesignConfigurationTest extends TestCase
         $configurations = $this->adapter->getDesignConfigurations();
 
         $this->assertIsArray($configurations);
-        $this->assertCount(5, $configurations);
+        $this->assertCount(6, $configurations);
 
         $this->assertArrayHasKey('color-primary', $configurations);
         $this->assertArrayHasKey('color-secondary', $configurations);
         $this->assertArrayHasKey('font-primary', $configurations);
+        $this->assertArrayHasKey('font-secondary', $configurations);
         $this->assertArrayHasKey('radius-items', $configurations);
         $this->assertArrayHasKey('logo', $configurations);
     }
