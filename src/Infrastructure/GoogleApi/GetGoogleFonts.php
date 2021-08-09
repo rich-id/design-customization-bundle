@@ -28,8 +28,7 @@ class GetGoogleFonts
         GetParameter $getParameter,
         DenormalizerInterface $denormalizer,
         HttpClientInterface $httpClient
-    )
-    {
+    ) {
         $this->getParameter = $getParameter;
         $this->denormalizer = $denormalizer;
         $this->httpClient = $httpClient;

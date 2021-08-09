@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Tests\Domain\Model;
 
 use RichCongress\TestSuite\TestCase\TestCase;
-use RichId\DesignCustomizationBundle\Domain\Model\GoogleFont;
 use RichId\DesignCustomizationBundle\Domain\Model\FontInterface;
+use RichId\DesignCustomizationBundle\Domain\Model\GoogleFont;
 
 /** @covers \RichId\DesignCustomizationBundle\Domain\Model\GoogleFont */
 final class GoogleFontTest extends TestCase

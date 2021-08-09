@@ -61,7 +61,6 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertSame('My Font', $fontFamily);
     }
 
-
     public function testDesignFontUrlConfigurationNotFound(): void
     {
         $fontUrl = $this->extension->designFontUrl('my_slug');
