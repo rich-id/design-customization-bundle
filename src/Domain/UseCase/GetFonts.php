@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Domain\UseCase;
 
 use RichId\DesignCustomizationBundle\Domain\Model\Font;
+use RichId\DesignCustomizationBundle\Domain\Model\FontInterface;
 use RichId\DesignCustomizationBundle\Domain\Port\GetParameterInterface;
 
 class GetFonts
@@ -21,7 +22,7 @@ class GetFonts
         $this->getGoogleFonts = $getGoogleFonts;
     }
 
-    /** @return Font[] */
+    /** @return FontInterface[] */
     public function __invoke(): array
     {
         $customFonts = [];
