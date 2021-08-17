@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\Resources\Stub;
 
@@ -35,6 +37,7 @@ final class HttpClientStub extends AbstractOverrideService implements HttpClient
 
         if ($routeFunction !== null) {
             $callback = [$this, $routeFunction];
+
             return $callback($method, $url, $options);
         }
 
@@ -79,7 +82,7 @@ final class HttpClientStub extends AbstractOverrideService implements HttpClient
                 [
                     'family' => 'My font 3',
                 ],
-            ]
+            ],
         ];
 
         return MockResponse::fromRequest(
