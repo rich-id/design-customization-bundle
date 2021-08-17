@@ -1,9 +1,42 @@
 {% set designCustomizationPrefix = getDesignCustomizationPrefix() %}
 
+{%
+    set hexaOpacities = {
+        100: 'FF',
+        95: 'F2',
+        90: 'E6',
+        85: 'D9',
+        80: 'CC',
+        75: 'BF',
+        70: 'B3',
+        65: 'A6',
+        60: '99',
+        55: '8C',
+        50: '80',
+        45: '73',
+        40: '66',
+        35: '59',
+        30: '4D',
+        25: '40',
+        20: '33',
+        15: '26',
+        10: '1A',
+        5: '0D',
+    }
+%}
+
 <style type="text/css">
     :root {
     {% for configuration in getDesignConfigurations(['color', 'radius', 'font']) %}
         --{{ designCustomizationPrefix }}-{{ configuration.slug }}: {{ configuration.valueToUse }};
+
+        {% if opacities is defined and opacities[configuration.slug] is defined %}
+            {% for opacity in opacities[configuration.slug] %}
+                {% if hexaOpacities[opacity] is defined %}
+                    --{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ opacity }}: {{ configuration.valueToUse ~ hexaOpacities[opacity] }};
+                {% endif %}
+            {% endfor %}
+        {% endif %}
     {% endfor %}
     }
 </style>
