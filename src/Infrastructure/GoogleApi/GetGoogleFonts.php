@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Infrastructure\GoogleApi;
 
 use RichId\DesignCustomizationBundle\Domain\Exception\InvalidGoogleFontApiKeyException;
+use RichId\DesignCustomizationBundle\Domain\Exception\InvalidGoogleFontApiResponseException;
 use RichId\DesignCustomizationBundle\Domain\Model\GoogleFont;
 use RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,6 +49,10 @@ class GetGoogleFonts
 
         if ($statusCode === Response::HTTP_FORBIDDEN) {
             throw new InvalidGoogleFontApiKeyException();
+        }
+
+        if ($statusCode !== Response::HTTP_OK) {
+            throw new InvalidGoogleFontApiResponseException();
         }
 
         return \array_map(

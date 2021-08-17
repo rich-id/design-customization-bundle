@@ -4,5 +4,9 @@ services:
         autowire: true
         public: true
 
+    RichId\DesignCustomizationBundle\Infrastructure\GoogleApi\GetGoogleFonts: ~
+
     RichId\DesignCustomizationBundle\Tests\Resources\Fixtures\DesignConfigurationFixtures: ~
     RichId\DesignCustomizationBundle\Tests\Resources\Fixtures\DummyUserFixtures: ~
+
+    RichId\DesignCustomizationBundle\Tests\Resources\Stub\HttpClientStub: ~
