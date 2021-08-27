@@ -29,6 +29,12 @@
     }
 %}
 
+{%
+    set bootsrapItems = {
+        'switch-point': 'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'-4 -4 8 8\'><circle r=\'3\' fill=\'%color%\'/></svg>'
+}
+%}
+
 <style type="text/css">
     :root {
     {% for configuration in getDesignConfigurations(['color', 'radius', 'font']) %}
@@ -39,6 +45,14 @@
                 {% if hexaOpacities[opacity] is defined %}
                     --{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ opacity }}: {{ configuration.valueToUse ~ hexaOpacities[opacity] }};
                 {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {% if bootstrap is defined and bootstrap[configuration.slug] is defined %}
+            {% for bootstrapItem in bootstrap[configuration.slug] %}
+                {% if bootsrapItems[bootstrapItem] is defined %}
+                    --{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ bootstrapItem }}: url("{{ bootsrapItems[bootstrapItem]|replace({'%color%': configuration.valueToUse|url_encode })|raw }}");
+            {% endif %}
             {% endfor %}
         {% endif %}
     {% endfor %}
