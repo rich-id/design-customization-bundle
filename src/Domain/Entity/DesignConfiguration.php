@@ -69,6 +69,20 @@ class DesignConfiguration
     protected $value;
 
     /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=600, nullable=true, name="accessibility_default_value")
+     */
+    protected $accessibilityDefaultValue;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(type="string", length=600, nullable=true, name="accessibility_value")
+     */
+    protected $accessibilityValue;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(type="datetime", nullable=false, name="date_update")
