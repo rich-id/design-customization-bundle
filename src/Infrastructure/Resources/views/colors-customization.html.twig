@@ -40,24 +40,37 @@
 
 <style type="text/css">
     :root {
-    {% for configuration in getDesignConfigurations(['color', 'radius', 'font']) %}
-        --{{ designCustomizationPrefix }}-{{ configuration.slug }}: {{ configuration.valueToUse }};
-
-        {% if opacities is defined and opacities[configuration.slug] is defined %}
-            {% for opacity in opacities[configuration.slug] %}
-                {% if hexaOpacities[opacity] is defined %}
-                    --{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ opacity }}: {{ configuration.valueToUse ~ hexaOpacities[opacity] }};
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-
-        {% if bootstrap is defined and bootstrap[configuration.slug] is defined %}
-            {% for bootstrapItem in bootstrap[configuration.slug] %}
-                {% if bootsrapItems[bootstrapItem] is defined %}
-                    --{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ bootstrapItem }}: url("{{ bootsrapItems[bootstrapItem]|replace({'%color%': configuration.valueToUse|url_encode })|raw }}");
-            {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endfor %}
+    {% embed '@RichIdDesignCustomization/partial/colors-customization-generator.html.twig' %}
+        {% block color %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}: {{ configuration.valueToUse }};{% endblock %}
+        {% block colorOpacity %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ opacity }}: {{ configuration.valueToUse ~ hexaOpacities[opacity] }};{% endblock %}
+        {% block colorBootstrapItem %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ bootstrapItem }}: url("{{ bootsrapItems[bootstrapItem]|replace({'%color%': configuration.valueToUse|url_encode })|raw }}");{% endblock %}
+    {% endembed %}
     }
 </style>
+
+<script>
+    window.designCustomizationBundleItems = {};
+
+    {% embed '@RichIdDesignCustomization/partial/colors-customization-generator.html.twig' %}
+        {% block color %}
+            window.designCustomizationBundleItems["{{ '--' ~ designCustomizationPrefix ~ '-' ~ configuration.slug }}"] = {
+                value: '{{ configuration.valueToUse }}',
+                accessibilityValue: {% if configuration.accessibilityValueToUse is not null %}'{{ configuration.accessibilityValueToUse }}'{% else %}null{% endif %},
+            };
+        {% endblock %}
+
+        {% block colorOpacity %}
+            window.designCustomizationBundleItems["{{ '--' ~ designCustomizationPrefix ~ '-' ~ configuration.slug ~ '-' ~ opacity }}"] = {
+                value: '{{ configuration.valueToUse ~ hexaOpacities[opacity] }}',
+                accessibilityValue: {% if configuration.accessibilityValueToUse is not null %}'{{ configuration.accessibilityValueToUse ~ hexaOpacities[opacity] }}'{% else %}null{% endif %},
+            };
+        {% endblock %}
+
+        {% block colorBootstrapItem %}
+            window.designCustomizationBundleItems["{{ '--' ~ designCustomizationPrefix ~ '-' ~ configuration.slug ~ '-' ~ bootstrapItem }}"] = {
+                value: `url("{{ bootsrapItems[bootstrapItem]|replace({'%color%': configuration.valueToUse|url_encode })|raw }}")`,
+                accessibilityValue: {% if configuration.accessibilityValueToUse is not null %}`url("{{ bootsrapItems[bootstrapItem]|replace({'%color%': configuration.accessibilityValueToUse|url_encode })|raw }}")`{% else %}null{% endif %},
+            };
+        {% endblock %}
+    {% endembed %}
+</script>

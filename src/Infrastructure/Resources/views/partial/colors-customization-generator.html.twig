@@ -1,0 +1,19 @@
+{% for configuration in getDesignConfigurations(['color', 'radius', 'font']) %}
+    {% block color %}{% endblock %}
+
+    {% if opacities is defined and opacities[configuration.slug] is defined %}
+        {% for opacity in opacities[configuration.slug] %}
+            {% if hexaOpacities[opacity] is defined %}
+                {% block colorOpacity %}{% endblock %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {% if bootstrap is defined and bootstrap[configuration.slug] is defined %}
+        {% for bootstrapItem in bootstrap[configuration.slug] %}
+            {% if bootsrapItems[bootstrapItem] is defined %}
+                {% block colorBootstrapItem %}{% endblock %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,46 @@
+<script>
+    window.richIdIsInContrastMode = function () {
+        return document.cookie
+            .split(';')
+            .some(function (item) {
+                return item.trim()
+                    .indexOf('rich-id-accesibily-contrast') === 0;
+            });
+    };
+
+    window.clearRichIdContrastModeCookie = function () {
+        document.cookie = 'rich-id-accesibily-contrast=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;samesite=strict';
+    };
+
+    window.setRichIdContrastModeCookie = function () {
+        document.cookie = 'rich-id-accesibily-contrast=1;expires=path=/;samesite=strict';
+    };
+
+    window.richIdSwitchContrastMode = function () {
+        if (window.richIdIsInContrastMode()) {
+            window.clearRichIdContrastModeCookie();
+            window.richIdUpdateCssProperties();
+        } else {
+            window.setRichIdContrastModeCookie();
+            window.richIdUpdateCssProperties(true);
+        }
+    };
+
+    window.richIdUpdateCssProperties = function (displayAccessibilityValue) {
+        Object.keys(window.designCustomizationBundleItems).forEach(function (elKey) {
+            var element = window.designCustomizationBundleItems[elKey];
+
+            if (typeof element === 'undefined' || element === null) {
+                return;
+            }
+
+            var elementValue = element.value;
+
+            if (displayAccessibilityValue && element.accessibilityValue !== null && element.accessibilityValue !== '') {
+                elementValue = element.accessibilityValue;
+            }
+
+            document.documentElement.style.setProperty(elKey, elementValue);
+        });
+    }
+</script>

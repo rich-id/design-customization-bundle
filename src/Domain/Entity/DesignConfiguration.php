@@ -144,4 +144,13 @@ class DesignConfiguration
 
         return $this->defaultValue;
     }
+
+    public function getAccessibilityValueToUse(): ?string
+    {
+        if ($this->accessibilityValue !== null && $this->accessibilityValue !== '') {
+            return $this->accessibilityValue;
+        }
+
+        return $this->accessibilityDefaultValue;
+    }
 }
