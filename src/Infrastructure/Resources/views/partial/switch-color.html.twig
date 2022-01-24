@@ -13,7 +13,10 @@
     };
 
     window.setRichIdContrastModeCookie = function () {
-        document.cookie = 'rich-id-accesibily-contrast=1;expires=path=/;samesite=strict';
+        const expirationDate = new Date();
+        expirationDate.setMonth(expirationDate.getMonth() + 6);
+
+        document.cookie = 'rich-id-accesibily-contrast=1;expires=' + expirationDate.toUTCString() + 'path=/;samesite=strict';
     };
 
     window.richIdSwitchContrastMode = function () {
