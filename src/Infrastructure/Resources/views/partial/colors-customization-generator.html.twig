@@ -3,9 +3,7 @@
 
     {% if opacities is defined and opacities[configuration.slug] is defined %}
         {% for opacity in opacities[configuration.slug] %}
-            {% if hexaOpacities[opacity] is defined %}
-                {% block colorOpacity %}{% endblock %}
-            {% endif %}
+            {% block colorOpacity %}{% endblock %}
         {% endfor %}
     {% endif %}
 

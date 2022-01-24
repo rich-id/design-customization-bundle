@@ -22,12 +22,14 @@ final class DesignCustomizationExtensionTest extends TestCase
 
     public function testExtensions(): void
     {
-        $this->assertCount(4, $this->extension->getFunctions());
+        $this->assertCount(6, $this->extension->getFunctions());
 
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[0]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[1]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[2]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[3]);
+        $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[4]);
+        $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[5]);
 
         $this->assertCount(3, $this->extension->getFilters());
 
@@ -129,5 +131,32 @@ final class DesignCustomizationExtensionTest extends TestCase
     {
         $path = $this->extension->pathDesignImage('logo');
         $this->assertStringContainsString('uploads/design/default/logo.svg?cachekey=', $path ?? '');
+    }
+
+    public function testGetOpacitySuffixForNotFound(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectDeprecationMessage('Opacity must between 0 and 100.');
+
+        $this->extension->getOpacitySuffixFor(150);
+    }
+
+    public function testGetOpacitySuffixFor(): void
+    {
+        $suffix = $this->extension->getOpacitySuffixFor(62);
+
+        $this->assertSame('9E', $suffix);
+    }
+
+    public function testHasConfigurationWithAccessibilityValue(): void
+    {
+        $result = $this->extension->hasConfigurationWithAccessibilityValue();
+        $this->assertTrue($result);
+    }
+
+    public function testHasNotConfigurationWithAccessibilityValue(): void
+    {
+        $result = $this->extension->hasConfigurationWithAccessibilityValue(['font']);
+        $this->assertFalse($result);
     }
 }

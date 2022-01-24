@@ -1,35 +1,6 @@
 {% set designCustomizationPrefix = getDesignCustomizationPrefix() %}
 
 {%
-    set hexaOpacities = {
-        100: 'FF',
-        95: 'F2',
-        90: 'E6',
-        85: 'D9',
-        80: 'CC',
-        75: 'BF',
-        70: 'B3',
-        65: 'A6',
-        60: '99',
-        55: '8C',
-        50: '80',
-        45: '73',
-        40: '66',
-        35: '59',
-        30: '4D',
-        25: '40',
-        20: '33',
-        15: '26',
-        10: '1A',
-        5: '0D',
-        4: '0A',
-        3: '08',
-        2: '05',
-        1: '03',
-    }
-%}
-
-{%
     set bootsrapItems = {
         'switch-point': 'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'-4 -4 8 8\'><circle r=\'3\' fill=\'%color%\'/></svg>',
         'radio-point': 'data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'-4 -4 8 8\'><circle r=\'2.3\' fill=\'%color%\'/></svg>',
@@ -42,7 +13,7 @@
     :root {
     {% embed '@RichIdDesignCustomization/partial/colors-customization-generator.html.twig' %}
         {% block color %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}: {{ configuration.valueToUse }};{% endblock %}
-        {% block colorOpacity %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ opacity }}: {{ configuration.valueToUse ~ hexaOpacities[opacity] }};{% endblock %}
+        {% block colorOpacity %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ opacity }}: {{ configuration.valueToUse ~ getOpacitySuffixFor(opacity) }};{% endblock %}
         {% block colorBootstrapItem %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}-{{ bootstrapItem }}: url("{{ bootsrapItems[bootstrapItem]|replace({'%color%': configuration.valueToUse|url_encode })|raw }}");{% endblock %}
     {% endembed %}
     }
@@ -61,8 +32,8 @@
 
         {% block colorOpacity %}
             window.designCustomizationBundleItems["{{ '--' ~ designCustomizationPrefix ~ '-' ~ configuration.slug ~ '-' ~ opacity }}"] = {
-                value: '{{ configuration.valueToUse ~ hexaOpacities[opacity] }}',
-                accessibilityValue: {% if configuration.accessibilityValueToUse is not null %}'{{ configuration.accessibilityValueToUse ~ hexaOpacities[opacity] }}'{% else %}null{% endif %},
+                value: '{{ configuration.valueToUse ~ getOpacitySuffixFor(opacity) }}',
+                accessibilityValue: {% if configuration.accessibilityValueToUse is not null %}'{{ configuration.accessibilityValueToUse ~ getOpacitySuffixFor(opacity) }}'{% else %}null{% endif %},
             };
         {% endblock %}
 

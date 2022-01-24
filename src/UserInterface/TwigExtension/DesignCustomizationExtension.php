@@ -6,6 +6,7 @@ namespace RichId\DesignCustomizationBundle\UserInterface\TwigExtension;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
 use RichId\DesignCustomizationBundle\Domain\Exception\NotFoundDesignConfigurationException;
+use RichId\DesignCustomizationBundle\Domain\Helper\CssHexadecimalOpacityHelper;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfiguration;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue;
@@ -65,6 +66,8 @@ class DesignCustomizationExtension extends AbstractExtension
             new TwigFunction('getDesignConfigurations', [$this, 'getDesignConfigurations']),
             new TwigFunction('getDesignConfigurationValue', [$this, 'getDesignConfigurationValue']),
             new TwigFunction('getDesignCustomizationPrefix', [$this, 'getDesignCustomizationPrefix']),
+            new TwigFunction('getOpacitySuffixFor', [$this, 'getOpacitySuffixFor']),
+            new TwigFunction('hasConfigurationWithAccessibilityValue', [$this, 'hasConfigurationWithAccessibilityValue']),
         ];
     }
 
@@ -135,5 +138,22 @@ class DesignCustomizationExtension extends AbstractExtension
         } catch (NotFoundDesignConfigurationException $e) {
             return null;
         }
+    }
+
+    public function getOpacitySuffixFor(int $opacity): string
+    {
+        return CssHexadecimalOpacityHelper::getSuffixFor($opacity);
+    }
+
+    public function hasConfigurationWithAccessibilityValue($types = []): bool
+    {
+        return !empty(
+            \array_filter(
+                ($this->getConfigurations)($types),
+                static function (DesignConfiguration $configuration) {
+                    return $configuration->getAccessibilityValueToUse() !== null && $configuration->getAccessibilityValueToUse() !== '';
+                }
+            )
+        );
     }
 }
