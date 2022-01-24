@@ -41,7 +41,7 @@ final class DesignConfigurationTest extends TestCase
     public function testEntity(): void
     {
         $entity = $this->getReference(DesignConfiguration::class, 'color-primary');
-        $entity->setValue('#aaaaaa');
+        ForceExecutionHelper::setValue($entity, 'value', '#aaaaaa');
 
         $this->assertSame(1, $entity->getId());
         $this->assertSame(1, $entity->getPosition());
@@ -53,12 +53,21 @@ final class DesignConfigurationTest extends TestCase
         $this->assertInstanceOf(\DateTime::class, $entity->getDateUpdate());
     }
 
-    public function testGetValueToUser(): void
+    public function testGetValueToUse(): void
     {
         $entity = $this->getReference(DesignConfiguration::class, 'color-primary');
         $this->assertSame('#ffffff', $entity->getValueToUse());
 
-        $entity->setValue('#aaaaaa');
+        ForceExecutionHelper::setValue($entity, 'value', '#aaaaaa');
         $this->assertSame('#aaaaaa', $entity->getValueToUse());
+    }
+
+    public function testGetAccessibilityValueToUse(): void
+    {
+        $entity = $this->getReference(DesignConfiguration::class, 'color-primary');
+        $this->assertSame('#ffffff', $entity->getAccessibilityValueToUse());
+
+        ForceExecutionHelper::setValue($entity, 'accessibilityValue', '#aaaaaa');
+        $this->assertSame('#aaaaaa', $entity->getAccessibilityValueToUse());
     }
 }

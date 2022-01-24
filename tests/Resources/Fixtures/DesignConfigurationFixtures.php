@@ -16,12 +16,13 @@ final class DesignConfigurationFixtures extends AbstractFixture
             DesignConfiguration::class,
             'color-primary',
             [
-                'slug'         => 'color-primary',
-                'name'         => 'Primary color',
-                'type'         => DesignConfigurationType::COLOR,
-                'position'     => 1,
-                'defaultValue' => '#ffffff',
-                'dateUpdate'   => new \DateTime(),
+                'slug'                      => 'color-primary',
+                'name'                      => 'Primary color',
+                'type'                      => DesignConfigurationType::COLOR,
+                'position'                  => 1,
+                'defaultValue'              => '#ffffff',
+                'accessibilityDefaultValue' => '#ffffff',
+                'dateUpdate'                => new \DateTime(),
             ]
         );
 
