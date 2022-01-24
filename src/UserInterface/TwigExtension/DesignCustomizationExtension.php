@@ -145,6 +145,7 @@ class DesignCustomizationExtension extends AbstractExtension
         return CssHexadecimalOpacityHelper::getSuffixFor($opacity);
     }
 
+    /** @param string|string[] $types */
     public function hasConfigurationWithAccessibilityValue($types = []): bool
     {
         return !empty(
