@@ -47,5 +47,9 @@
         });
     }
 
+    {% if hasConfigurationWithAccessibilityValue(['color', 'radius', 'font']) == false %}
+        window.clearRichIdContrastModeCookie();
+    {% endif %}
+
     window.richIdUpdateCssProperties(window.richIdIsInContrastMode());
 </script>
