@@ -9,14 +9,20 @@
     };
 
     window.clearRichIdContrastModeCookie = function () {
-        document.cookie = 'rich-id-accesibily-contrast=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/;samesite=strict';
+        const cookieName = 'rich-id-accesibily-contrast';
+
+        document.cookie = cookieName + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/;';
+        document.cookie = cookieName + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/; domain=.' + location.hostname + ';';
+        document.cookie = cookieName + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/; domain=.' + location.hostname.split('.').slice(-2).join('.') + ';';
     };
 
     window.setRichIdContrastModeCookie = function () {
         const expirationDate = new Date();
         expirationDate.setMonth(expirationDate.getMonth() + 6);
 
-        document.cookie = 'rich-id-accesibily-contrast=1;expires=' + expirationDate.toUTCString() + 'path=/;samesite=strict';
+        const secure = location.protocol === 'https:' ? '; Secure' : '';
+
+        document.cookie = 'rich-id-accesibily-contrast=1; expires=' + expirationDate.toUTCString() + '; path=/;' + secure + '; samesite=lax';
     };
 
     window.richIdSwitchContrastMode = function () {
