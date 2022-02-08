@@ -4,12 +4,12 @@
             .split(';')
             .some(function (item) {
                 return item.trim()
-                    .indexOf('rich-id-accesibily-contrast') === 0;
+                    .indexOf('rich-id-accessibility-contrast') === 0;
             });
     };
 
     window.clearRichIdContrastModeCookie = function () {
-        const cookieName = 'rich-id-accesibily-contrast';
+        const cookieName = 'rich-id-accessibility-contrast';
 
         document.cookie = cookieName + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/;';
         document.cookie = cookieName + '=; expires=Thu, 01 Jan 2000 00:00:00 GMT; path=/; domain=.' + location.hostname + ';';
@@ -22,7 +22,7 @@
 
         const secure = location.protocol === 'https:' ? '; Secure' : '';
 
-        document.cookie = 'rich-id-accesibily-contrast=1; expires=' + expirationDate.toUTCString() + '; path=/;' + secure + '; samesite=lax';
+        document.cookie = 'rich-id-accessibility-contrast=1; expires=' + expirationDate.toUTCString() + '; path=/;' + secure + '; samesite=lax';
     };
 
     window.richIdSwitchContrastMode = function () {
