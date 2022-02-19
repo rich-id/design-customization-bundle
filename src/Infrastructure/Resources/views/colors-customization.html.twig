@@ -9,7 +9,7 @@
 }
 %}
 
-<style type="text/css">
+<style>
     :root {
     {% embed '@RichIdDesignCustomization/partial/colors-customization-generator.html.twig' %}
         {% block color %}--{{ designCustomizationPrefix }}-{{ configuration.slug }}: {{ configuration.valueToUse }};{% endblock %}
