@@ -4,8 +4,8 @@ The module provides a lot of utilities to facilitate the integration of content:
 
 [source, html]
 ----
-<!-- This import allows to load a google font from a slug -->
-{% include '@RichIdDesignCustomization/google-font-import.html.twig' with {configurationSlug: 'my-font-slug'} %}
+<!-- This import allows to load a font from a slug -->
+{% include '@RichIdDesignCustomization/font-import.html.twig' with {configurationSlug: 'my-font-slug'} %}
 
 <!-- This import allows to apply to an HTML element a font from its slug -->
 {% include '@RichIdDesignCustomization/apply-font-to.html.twig' with {configurationSlug: 'font-primary', applyTo: 'body'} %}

@@ -54,6 +54,19 @@ final class DesignConfigurationFixtures extends AbstractFixture
 
         $this->createObject(
             DesignConfiguration::class,
+            'font-primary',
+            [
+                'slug'         => 'font-custom',
+                'name'         => 'Custom font',
+                'type'         => DesignConfigurationType::FONT,
+                'position'     => 2,
+                'defaultValue' => 'CustomFont',
+                'dateUpdate'   => new \DateTime(),
+            ]
+        );
+
+        $this->createObject(
+            DesignConfiguration::class,
             'radius-items',
             [
                 'slug'         => 'radius-items',

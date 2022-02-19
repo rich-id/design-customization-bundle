@@ -23,11 +23,12 @@ final class GetConfigurationsTest extends TestCase
         $configurations = ($this->useCase)();
 
         $this->assertIsArray($configurations);
-        $this->assertCount(5, $configurations);
+        $this->assertCount(6, $configurations);
 
         $this->assertArrayHasKey('color-primary', $configurations);
         $this->assertArrayHasKey('color-secondary', $configurations);
         $this->assertArrayHasKey('font-primary', $configurations);
+        $this->assertArrayHasKey('font-custom', $configurations);
         $this->assertArrayHasKey('radius-items', $configurations);
         $this->assertArrayHasKey('logo', $configurations);
     }
@@ -44,11 +45,12 @@ final class GetConfigurationsTest extends TestCase
         );
 
         $this->assertIsArray($configurations);
-        $this->assertCount(5, $configurations);
+        $this->assertCount(6, $configurations);
 
         $this->assertArrayHasKey('color-primary', $configurations);
         $this->assertArrayHasKey('color-secondary', $configurations);
         $this->assertArrayHasKey('font-primary', $configurations);
+        $this->assertArrayHasKey('font-custom', $configurations);
         $this->assertArrayHasKey('radius-items', $configurations);
         $this->assertArrayHasKey('logo', $configurations);
     }
@@ -69,9 +71,10 @@ final class GetConfigurationsTest extends TestCase
         $configurations = ($this->useCase)(DesignConfigurationType::FONT);
 
         $this->assertIsArray($configurations);
-        $this->assertCount(1, $configurations);
+        $this->assertCount(2, $configurations);
 
         $this->assertArrayHasKey('font-primary', $configurations);
+        $this->assertArrayHasKey('font-custom', $configurations);
     }
 
     public function testUseCaseFilterOnImage(): void

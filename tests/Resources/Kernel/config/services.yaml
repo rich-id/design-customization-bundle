@@ -4,5 +4,6 @@ services:
         autowire: true
         public: true
 
+    RichId\DesignCustomizationBundle\Tests\Resources\Fixtures\CustomFontFixtures: ~
     RichId\DesignCustomizationBundle\Tests\Resources\Fixtures\DesignConfigurationFixtures: ~
     RichId\DesignCustomizationBundle\Tests\Resources\Fixtures\DummyUserFixtures: ~

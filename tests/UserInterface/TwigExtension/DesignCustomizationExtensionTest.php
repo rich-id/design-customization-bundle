@@ -31,11 +31,12 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[4]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[5]);
 
-        $this->assertCount(3, $this->extension->getFilters());
+        $this->assertCount(4, $this->extension->getFilters());
 
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[0]);
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[1]);
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[2]);
+        $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[3]);
     }
 
     public function testAbsoluteDesignImageConfigurationNotFound(): void
@@ -56,10 +57,34 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertNull($fontFamily);
     }
 
-    public function testDesignFontFamily(): void
+    public function testDesignFontFamilyGoogleFront(): void
     {
         $fontFamily = $this->extension->designFontFamily('font-primary');
         $this->assertSame('My Font', $fontFamily);
+    }
+
+    public function testDesignFontFamilyCustomFront(): void
+    {
+        $fontFamily = $this->extension->designFontFamily('font-custom');
+        $this->assertSame('CustomFont', $fontFamily);
+    }
+
+    public function testDesignFontUrlConfigurationNotFound(): void
+    {
+        $url = $this->extension->designFontUrl('my_slug');
+        $this->assertNull($url);
+    }
+
+    public function testDesignFontUrlGoogleFont(): void
+    {
+        $url = $this->extension->designFontUrl('font-primary');
+        $this->assertSame('https://fonts.googleapis.com/css2?family=My+Font:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900', $url);
+    }
+
+    public function testDesignFontUrlCUstomFont(): void
+    {
+        $url = $this->extension->designFontUrl('font-custom');
+        $this->assertSame('https://test.test', $url);
     }
 
     public function testGetDesignConfigurationConfigurationNotFound(): void
@@ -83,11 +108,12 @@ final class DesignCustomizationExtensionTest extends TestCase
         $configurations = $this->extension->getDesignConfigurations();
 
         $this->assertIsArray($configurations);
-        $this->assertCount(5, $configurations);
+        $this->assertCount(6, $configurations);
 
         $this->assertArrayHasKey('color-primary', $configurations);
         $this->assertArrayHasKey('color-secondary', $configurations);
         $this->assertArrayHasKey('font-primary', $configurations);
+        $this->assertArrayHasKey('font-custom', $configurations);
         $this->assertArrayHasKey('radius-items', $configurations);
         $this->assertArrayHasKey('logo', $configurations);
     }

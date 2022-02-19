@@ -1,0 +1,7 @@
+{% if configurationSlug is defined %}
+    {% set fontUrl = configurationSlug|designFontUrl %}
+
+    {% if fontUrl is not null %}
+        <link rel="stylesheet" href="{{ fontUrl }}">
+    {% endif %}
+{% endif %}
