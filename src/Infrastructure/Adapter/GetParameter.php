@@ -26,7 +26,6 @@ class GetParameter implements GetParameterInterface
 
     public function getDesignCustomizationPrefix(): string
     {
-        /* @phpstan-ignore-next-line */
         return (string) $this->parameterBag->get('rich_id_design_customization.css_customization_prefix');
     }
 

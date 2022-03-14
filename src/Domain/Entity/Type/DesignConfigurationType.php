@@ -6,7 +6,7 @@ namespace RichId\DesignCustomizationBundle\Domain\Entity\Type;
 
 use Fresh\DoctrineEnumBundle\DBAL\Types\AbstractEnumType;
 
-/** @extends AbstractEnumType<string> */
+/** @extends AbstractEnumType<string, string> */
 class DesignConfigurationType extends AbstractEnumType
 {
     public const FONT = 'font';
@@ -15,7 +15,7 @@ class DesignConfigurationType extends AbstractEnumType
     public const IMAGE = 'image';
 
     /** @var array<string, string> */
-    protected static $choices = [
+    protected static array $choices = [
         self::FONT   => 'font',
         self::RADIUS => 'radius',
         self::COLOR  => 'color',

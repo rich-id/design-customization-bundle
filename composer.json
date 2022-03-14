@@ -16,18 +16,18 @@
         "issues": "https://github.com/rich-id/design-customization-bundle/issues"
     },
     "require": {
-        "php": ">=7.3|^8.0",
+        "php": "^8.0",
         "doctrine/migrations": "^3.0",
         "doctrine/orm": "^2.7",
-        "fresh/doctrine-enum-bundle": "^6.6||^7.1",
+        "fresh/doctrine-enum-bundle": "^7.5",
         "richcongress/bundle-toolbox": "^1.1",
         "sensio/framework-extra-bundle": "^5.0|^6.0",
         "swiftmailer/swiftmailer": "^6.2",
-        "symfony/cache": "^4.0|^5.0",
-        "symfony/routing": "^4.0|^5.0",
-        "symfony/security-bundle": "^4.0|^5.0",
-        "symfony/translation": "^4.0|^5.0",
-        "symfony/twig-bundle": "^4.0|^5.0"
+        "symfony/cache": "^5.4",
+        "symfony/routing": "^5.4",
+        "symfony/security-bundle": "^5.4",
+        "symfony/translation": "^5.4",
+        "symfony/twig-bundle": "^5.4"
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "^2.0",
@@ -47,7 +47,6 @@
         }
     },
     "config": {
-        "bin-dir": "bin",
         "discard-changes": true,
         "sort-packages": true
     },
@@ -62,11 +61,11 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "./bin/php-cs-fixer fix"
+                "docker-compose exec -T application ./vendor/bin/php-cs-fixer fix"
             ],
             "pre-push": [
-                "./bin/php-cs-fixer fix --dry-run",
-                "./bin/static_analysis"
+                "docker-compose exec -T application ./vendor/bin/php-cs-fixer fix --dry-run",
+                "docker-compose exec -T application ./vendor/bin/static_analysis"
             ]
         }
     }
