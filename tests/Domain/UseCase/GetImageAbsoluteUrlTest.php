@@ -29,7 +29,7 @@ final class GetImageAbsoluteUrlTest extends TestCase
     public function testUseCaseBadType(): void
     {
         $url = ($this->useCase)('color-primary');
-        $this->assertSame('http://localhost/', $url);
+        $this->assertSame('', $url);
     }
 
     public function testUseCase(): void
