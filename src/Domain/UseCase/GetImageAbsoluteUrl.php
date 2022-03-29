@@ -24,6 +24,10 @@ class GetImageAbsoluteUrl
     {
         $path = ($this->getImagePath)($configurationSlug);
 
-        return $this->urlGenerator->getAbsoluteUrlFromPath($path ?? '');
+        if ($path === null || $path === '') {
+            return '';
+        }
+
+        return $this->urlGenerator->getAbsoluteUrlFromPath($path);
     }
 }
