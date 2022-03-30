@@ -10,6 +10,7 @@ use RichId\DesignCustomizationBundle\Domain\Helper\CssHexadecimalOpacityHelper;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfiguration;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurationValue;
+use RichId\DesignCustomizationBundle\Domain\UseCase\GetCustomImageAbsoluteUrl;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl;
@@ -30,6 +31,9 @@ class DesignCustomizationExtension extends AbstractExtension
     /** @var GetConfigurationValue */
     protected $getConfigurationValue;
 
+    /** @var GetCustomImageAbsoluteUrl */
+    protected $getCustomImageAbsoluteUrl;
+
     /** @var GetFontFamily */
     protected $getFontFamily;
 
@@ -49,6 +53,7 @@ class DesignCustomizationExtension extends AbstractExtension
         GetConfiguration $getConfiguration,
         GetConfigurations $getConfigurations,
         GetConfigurationValue $getConfigurationValue,
+        GetCustomImageAbsoluteUrl $getCustomImageAbsoluteUrl,
         GetFontFamily $getFontFamily,
         GetFontUrl $getFontUrl,
         GetImageAbsoluteUrl $getImageAbsoluteUrl,
@@ -58,6 +63,7 @@ class DesignCustomizationExtension extends AbstractExtension
         $this->getConfiguration = $getConfiguration;
         $this->getConfigurations = $getConfigurations;
         $this->getConfigurationValue = $getConfigurationValue;
+        $this->getCustomImageAbsoluteUrl = $getCustomImageAbsoluteUrl;
         $this->getFontFamily = $getFontFamily;
         $this->getFontUrl = $getFontUrl;
         $this->getImageAbsoluteUrl = $getImageAbsoluteUrl;
@@ -71,6 +77,7 @@ class DesignCustomizationExtension extends AbstractExtension
             new TwigFunction('getDesignConfiguration', [$this, 'getDesignConfiguration']),
             new TwigFunction('getDesignConfigurations', [$this, 'getDesignConfigurations']),
             new TwigFunction('getDesignConfigurationValue', [$this, 'getDesignConfigurationValue']),
+            new TwigFunction('getCustomImageAbsoluteUrl', [$this, 'getCustomImageAbsoluteUrl']),
             new TwigFunction('getDesignCustomizationPrefix', [$this, 'getDesignCustomizationPrefix']),
             new TwigFunction('getOpacitySuffixFor', [$this, 'getOpacitySuffixFor']),
             new TwigFunction('hasConfigurationWithAccessibilityValue', [$this, 'hasConfigurationWithAccessibilityValue']),
@@ -140,6 +147,11 @@ class DesignCustomizationExtension extends AbstractExtension
         } catch (NotFoundDesignConfigurationException $e) {
             return null;
         }
+    }
+
+    public function getCustomImageAbsoluteUrl(string $imagePath): ?string
+    {
+        return ($this->getCustomImageAbsoluteUrl)($imagePath);
     }
 
     public function getDesignCustomizationPrefix(): string

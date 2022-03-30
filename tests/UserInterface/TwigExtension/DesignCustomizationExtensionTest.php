@@ -22,7 +22,7 @@ final class DesignCustomizationExtensionTest extends TestCase
 
     public function testExtensions(): void
     {
-        $this->assertCount(6, $this->extension->getFunctions());
+        $this->assertCount(7, $this->extension->getFunctions());
 
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[0]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[1]);
@@ -30,6 +30,7 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[3]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[4]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[5]);
+        $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[6]);
 
         $this->assertCount(4, $this->extension->getFilters());
 
@@ -184,5 +185,11 @@ final class DesignCustomizationExtensionTest extends TestCase
     {
         $result = $this->extension->hasConfigurationWithAccessibilityValue(['font']);
         $this->assertFalse($result);
+    }
+
+    public function testGetCustomImageAbsoluteUrl(): void
+    {
+        $result = $this->extension->getCustomImageAbsoluteUrl('test.svg');
+        $this->assertStringContainsString('http://localhost/uploads/design/test.svg', $result);
     }
 }
