@@ -190,6 +190,6 @@ final class DesignCustomizationExtensionTest extends TestCase
     public function testGetCustomImageAbsoluteUrl(): void
     {
         $result = $this->extension->getCustomImageAbsoluteUrl('test.svg');
-        $this->assertStringContainsString('http://localhost/uploads/design/test.svg', $result);
+        $this->assertSame('http://localhost/uploads/design/test.svg', $result);
     }
 }
