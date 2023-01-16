@@ -22,15 +22,14 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
         self::assertStatusCode(Response::HTTP_OK, $response);
         self::assertSame(
             [
-                'customFonts'          => [
+                'customFonts' => [
                     [
                         'fontFamily' => 'CustomFont',
                         'url'        => 'https://test.test',
-                    ]
+                    ],
                 ],
                 'designConfigurations' => [
                     [
-
                         'slug'                      => 'color-primary',
                         'name'                      => 'Primary color',
                         'type'                      => DesignConfigurationType::COLOR,
@@ -40,10 +39,8 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                         'accessibilityDefaultValue' => '#ffffff',
                         'accessibilityValue'        => null,
                         'dateUpdate'                => '2023-01-01 12:00:00',
-
                     ],
                     [
-
                         'slug'                      => 'color-secondary',
                         'name'                      => 'Secondary color',
                         'type'                      => DesignConfigurationType::COLOR,
@@ -53,10 +50,8 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                         'accessibilityDefaultValue' => null,
                         'accessibilityValue'        => null,
                         'dateUpdate'                => '2023-01-01 12:00:00',
-
                     ],
                     [
-
                         'slug'                      => 'font-primary',
                         'name'                      => 'Primary font',
                         'type'                      => DesignConfigurationType::FONT,
@@ -66,10 +61,8 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                         'accessibilityDefaultValue' => null,
                         'accessibilityValue'        => null,
                         'dateUpdate'                => '2023-01-01 12:00:00',
-
                     ],
                     [
-
                         'slug'                      => 'font-custom',
                         'name'                      => 'Custom font',
                         'type'                      => DesignConfigurationType::FONT,
@@ -79,10 +72,8 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                         'accessibilityDefaultValue' => null,
                         'accessibilityValue'        => null,
                         'dateUpdate'                => '2023-01-01 12:00:00',
-
                     ],
                     [
-
                         'slug'                      => 'radius-items',
                         'name'                      => 'Radius items',
                         'type'                      => DesignConfigurationType::RADIUS,
@@ -92,10 +83,8 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                         'accessibilityDefaultValue' => null,
                         'accessibilityValue'        => null,
                         'dateUpdate'                => '2023-01-01 12:00:00',
-
                     ],
                     [
-
                         'slug'                      => 'logo',
                         'name'                      => 'Logo',
                         'type'                      => DesignConfigurationType::IMAGE,
@@ -105,9 +94,8 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                         'accessibilityDefaultValue' => null,
                         'accessibilityValue'        => null,
                         'dateUpdate'                => '2023-01-01 12:00:00',
-
                     ],
-                ]
+                ],
             ],
             $response->getJsonContent()
         );
