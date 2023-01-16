@@ -11,7 +11,7 @@ use RichId\DesignCustomizationBundle\Domain\Entity\CustomFont;
 /** @extends ServiceEntityRepository<CustomFont> */
 class CustomFontRepository extends ServiceEntityRepository
 {
-    /** @codeCoverageIgnore  */
+    /** @codeCoverageIgnore */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, CustomFont::class);

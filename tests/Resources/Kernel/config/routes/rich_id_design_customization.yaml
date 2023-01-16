@@ -1,0 +1,2 @@
+rich_id_design_customization_public:
+    resource: "@RichIdDesignCustomizationBundle/Resources/config/routing/routing-public.xml"

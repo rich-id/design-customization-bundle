@@ -15,7 +15,7 @@ use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
  */
 class DesignConfigurationRepository extends ServiceEntityRepository
 {
-    /** @codeCoverageIgnore  */
+    /** @codeCoverageIgnore */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, DesignConfiguration::class);

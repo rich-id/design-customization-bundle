@@ -124,6 +124,16 @@ class DesignConfiguration
         return $this->value;
     }
 
+    public function getAccessibilityDefaultValue(): ?string
+    {
+        return $this->accessibilityDefaultValue;
+    }
+
+    public function getAccessibilityValue(): ?string
+    {
+        return $this->accessibilityValue;
+    }
+
     public function getDateUpdate(): \DateTime
     {
         return $this->dateUpdate;

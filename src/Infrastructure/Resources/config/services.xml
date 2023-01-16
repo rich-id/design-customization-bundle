@@ -31,6 +31,8 @@
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Repository\CustomFontRepository" />
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository" />
 
+        <service id="RichId\DesignCustomizationBundle\UserInterface\RestController\GetConfigurationsRoute" />
+
         <service id="RichId\DesignCustomizationBundle\UserInterface\TwigExtension\DesignCustomizationExtension" />
     </services>
 </container>

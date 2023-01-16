@@ -22,7 +22,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
                 'position'                  => 1,
                 'defaultValue'              => '#ffffff',
                 'accessibilityDefaultValue' => '#ffffff',
-                'dateUpdate'                => new \DateTime(),
+                'dateUpdate'                => new \DateTime('2023-01-01 12:00:00'),
             ]
         );
 
@@ -35,7 +35,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
                 'type'         => DesignConfigurationType::COLOR,
                 'position'     => 2,
                 'defaultValue' => '#000000',
-                'dateUpdate'   => new \DateTime(),
+                'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
             ]
         );
 
@@ -48,7 +48,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
                 'type'         => DesignConfigurationType::FONT,
                 'position'     => 1,
                 'defaultValue' => 'My Font',
-                'dateUpdate'   => new \DateTime(),
+                'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
             ]
         );
 
@@ -61,7 +61,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
                 'type'         => DesignConfigurationType::FONT,
                 'position'     => 2,
                 'defaultValue' => 'CustomFont',
-                'dateUpdate'   => new \DateTime(),
+                'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
             ]
         );
 
@@ -74,7 +74,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
                 'type'         => DesignConfigurationType::RADIUS,
                 'position'     => 1,
                 'defaultValue' => '0',
-                'dateUpdate'   => new \DateTime(),
+                'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
             ]
         );
 
@@ -87,7 +87,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
                 'type'         => DesignConfigurationType::IMAGE,
                 'position'     => 1,
                 'defaultValue' => 'default/logo.svg',
-                'dateUpdate'   => new \DateTime(),
+                'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
             ]
         );
     }
