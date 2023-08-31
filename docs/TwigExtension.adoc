@@ -5,6 +5,7 @@
 | Name                         | Type | Description
 
 | absoluteDesignImage          | Filter   | Return image absolute url of the given slug, empty string if the slug does not match any configuration
+| altDesignImage               | Filter   | Return image alt of the given slug, empty string if the slug does not match any configuration
 | designFontFamily             | Filter   | Return font family of the given slug, null if the slug does not match any configuration
 | designFontUrl                | Filter   | Return font url of the given slug, null if the slug does not match any configuration
 | getDesignConfiguration       | Function | Return configuration of the given slug, null if the slug does not match any configuration

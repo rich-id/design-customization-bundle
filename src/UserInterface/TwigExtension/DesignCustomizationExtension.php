@@ -14,6 +14,7 @@ use RichId\DesignCustomizationBundle\Domain\UseCase\GetCustomImageAbsoluteUrl;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl;
+use RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAlt;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath;
 use RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter;
 use Twig\Extension\AbstractExtension;
@@ -43,6 +44,9 @@ class DesignCustomizationExtension extends AbstractExtension
     /** @var GetImageAbsoluteUrl */
     protected $getImageAbsoluteUrl;
 
+    /** @var GetImageAlt */
+    protected $getImageAlt;
+
     /** @var GetImagePath */
     protected $getImagePath;
 
@@ -57,6 +61,7 @@ class DesignCustomizationExtension extends AbstractExtension
         GetFontFamily $getFontFamily,
         GetFontUrl $getFontUrl,
         GetImageAbsoluteUrl $getImageAbsoluteUrl,
+        GetImageAlt $getImageAlt,
         GetImagePath $getImagePath,
         GetParameter $getParameter
     ) {
@@ -67,6 +72,7 @@ class DesignCustomizationExtension extends AbstractExtension
         $this->getFontFamily = $getFontFamily;
         $this->getFontUrl = $getFontUrl;
         $this->getImageAbsoluteUrl = $getImageAbsoluteUrl;
+        $this->getImageAlt = $getImageAlt;
         $this->getImagePath = $getImagePath;
         $this->getParameter = $getParameter;
     }
@@ -88,6 +94,7 @@ class DesignCustomizationExtension extends AbstractExtension
     {
         return [
             new TwigFilter('absoluteDesignImage', [$this, 'absoluteDesignImage']),
+            new TwigFilter('altDesignImage', [$this, 'altDesignImage']),
             new TwigFilter('designFontFamily', [$this, 'designFontFamily']),
             new TwigFilter('designFontUrl', [$this, 'designFontUrl']),
             new TwigFilter('pathDesignImage', [$this, 'pathDesignImage']),
@@ -98,6 +105,15 @@ class DesignCustomizationExtension extends AbstractExtension
     {
         try {
             return ($this->getImageAbsoluteUrl)($configurationSlug);
+        } catch (NotFoundDesignConfigurationException $e) {
+            return '';
+        }
+    }
+
+    public function altDesignImage(string $configurationSlug): string
+    {
+        try {
+            return ($this->getImageAlt)($configurationSlug);
         } catch (NotFoundDesignConfigurationException $e) {
             return '';
         }

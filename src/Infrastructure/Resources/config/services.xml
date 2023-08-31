@@ -18,6 +18,7 @@
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetFontFamily" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAbsoluteUrl" />
+        <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImageAlt" />
         <service id="RichId\DesignCustomizationBundle\Domain\UseCase\GetImagePath" />
 
         <service id="RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetCustomFont" />
