@@ -5,35 +5,22 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository;
 
-/**
- * @ORM\Entity(repositoryClass="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository")
- * @ORM\Table("module_design_customization_custom_front")
- */
+#[ORM\Entity(repositoryClass: DesignConfigurationRepository::class)]
+#[ORM\Table('module_design_customization_custom_front')]
 class CustomFont
 {
-    /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\Column(type="integer", name="id", options={"unsigned":true})
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\Column(name: 'id', type: 'integer', options: ['unsigned' => true])]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    protected int $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false, length=255, unique=true, name="font_family")
-     */
-    protected $fontFamily;
+    #[ORM\Column(name: 'font_family', type: 'string', length: 255, unique: true, nullable: false)]
+    protected string $fontFamily;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false, length=255, name="url")
-     */
-    protected $url;
+    #[ORM\Column(name: 'url', type: 'string', length: 255, nullable: false)]
+    protected string $url;
 
     public function getId(): int
     {

@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\Infrastructure\Adapter;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\Infrastructure\Adapter\UrlGenerator */
+#[TestConfig('fixtures')]
 final class UrlGeneratorTest extends TestCase
 {
     /** @var UrlGenerator */

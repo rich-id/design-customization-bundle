@@ -4,17 +4,15 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\UserInterface\TwigExtension;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
 use RichId\DesignCustomizationBundle\UserInterface\TwigExtension\DesignCustomizationExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\UserInterface\TwigExtension\DesignCustomizationExtension
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\UserInterface\TwigExtension\DesignCustomizationExtension */
+#[TestConfig('fixtures')]
 final class DesignCustomizationExtensionTest extends TestCase
 {
     /** @var DesignCustomizationExtension */
@@ -32,7 +30,7 @@ final class DesignCustomizationExtensionTest extends TestCase
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[5]);
         $this->assertInstanceOf(TwigFunction::class, $this->extension->getFunctions()[6]);
 
-        $this->assertCount(4, $this->extension->getFilters());
+        $this->assertCount(5, $this->extension->getFilters());
 
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[0]);
         $this->assertInstanceOf(TwigFilter::class, $this->extension->getFilters()[1]);
@@ -163,7 +161,7 @@ final class DesignCustomizationExtensionTest extends TestCase
     public function testGetOpacitySuffixForNotFound(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectDeprecationMessage('Opacity must between 0 and 100.');
+        $this->expectExceptionMessage('Opacity must between 0 and 100.');
 
         $this->extension->getOpacitySuffixFor(150);
     }

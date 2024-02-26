@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\Infrastructure\Cache;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Infrastructure\Cache\CustomFontCache;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Contracts\Cache\CacheInterface;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\Infrastructure\Cache\CustomFontCache
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\Infrastructure\Cache\CustomFontCache */
+#[TestConfig('fixtures')]
 final class CustomFontCacheTest extends TestCase
 {
     /** @var CustomFontCache */

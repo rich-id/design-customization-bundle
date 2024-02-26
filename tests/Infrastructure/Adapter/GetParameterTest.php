@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\Infrastructure\Adapter;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\Infrastructure\Adapter\GetParameter */
+#[TestConfig('fixtures')]
 final class GetParameterTest extends TestCase
 {
     /** @var GetParameter */

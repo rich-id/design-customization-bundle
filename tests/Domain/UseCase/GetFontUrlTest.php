@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\Domain\UseCase;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Domain\Exception\NotFoundDesignConfigurationException;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\Domain\UseCase\GetFontUrl */
+#[TestConfig('fixtures')]
 final class GetFontUrlTest extends TestCase
 {
     /** @var GetFontUrl */

@@ -5,89 +5,44 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository;
 
-/**
- * @ORM\Entity(repositoryClass="RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository")
- * @ORM\Table(
- *     name="module_design_customization_configuration",
- *     uniqueConstraints={
- *         @ORM\UniqueConstraint(name="design_configuration_type_position_UNIQUE", columns={"type", "position"}),
- *     }
- * )
- */
+#[ORM\Entity(repositoryClass: DesignConfigurationRepository::class)]
+#[ORM\Table(name: 'module_design_customization_configuration')]
+#[ORM\UniqueConstraint(name: 'design_configuration_type_position_UNIQUE', columns: ['type', 'position'])]
 class DesignConfiguration
 {
-    /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\Column(type="integer", name="id", options={"unsigned":true})
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\Column(name: 'id', type: 'integer', options: ['unsigned' => true])]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    protected int $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false, length=255, unique=true, name="slug")
-     */
-    protected $slug;
+    #[ORM\Column(name: 'slug', type: 'string', length: 255, unique: true, nullable: false)]
+    protected string $slug;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", nullable=false, length=255, unique=true, name="name")
-     */
-    protected $name;
+    #[ORM\Column(name: 'name', type: 'string', length: 255, unique: true, nullable: false)]
+    protected string $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="DesignConfigurationType", nullable=false, name="type")
-     */
-    protected $type;
+    #[ORM\Column(name: 'type', type: 'DesignConfigurationType', nullable: false)]
+    protected string $type;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=false, name="position", options={"unsigned":true})
-     */
-    protected $position = 0;
+    #[ORM\Column(name: 'position', type: 'integer', nullable: false, options: ['unsigned' => true])]
+    protected int $position = 0;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=600, nullable=false, name="default_value")
-     */
-    protected $defaultValue;
+    #[ORM\Column(name: 'default_value', type: 'string', length: 600, nullable: false)]
+    protected string $defaultValue;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=600, nullable=true, name="value")
-     */
-    protected $value;
+    #[ORM\Column(name: 'value', type: 'string', length: 600, nullable: true)]
+    protected ?string $value;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=600, nullable=true, name="accessibility_default_value")
-     */
-    protected $accessibilityDefaultValue;
+    #[ORM\Column(name: 'accessibility_default_value', type: 'string', length: 600, nullable: true)]
+    protected ?string $accessibilityDefaultValue;
 
-    /**
-     * @var string|null
-     *
-     * @ORM\Column(type="string", length=600, nullable=true, name="accessibility_value")
-     */
-    protected $accessibilityValue;
+    #[ORM\Column(name: 'accessibility_value', type: 'string', length: 600, nullable: true)]
+    protected ?string $accessibilityValue;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=false, name="date_update")
-     */
-    protected $dateUpdate;
+    #[ORM\Column(name: 'date_update', type: 'datetime', nullable: false)]
+    protected \DateTime $dateUpdate;
 
     public function getId(): int
     {

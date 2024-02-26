@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\Domain\UseCase;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\Domain\UseCase\GetConfigurations */
+#[TestConfig('fixtures')]
 final class GetConfigurationsTest extends TestCase
 {
     /** @var GetConfigurations */

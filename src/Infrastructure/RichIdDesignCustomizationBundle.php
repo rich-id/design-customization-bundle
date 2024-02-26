@@ -26,9 +26,10 @@ class RichIdDesignCustomizationBundle extends AbstractBundle
         }
 
         $container->addCompilerPass(
-            DoctrineOrmMappingsPass::createAnnotationMappingDriver(
+            DoctrineOrmMappingsPass::createAttributeMappingDriver(
                 ['RichId\DesignCustomizationBundle\Domain\Entity'],
-                [__DIR__ . '/../Domain/Entity']
+                [__DIR__ . '/../Domain/Entity'],
+                reportFieldsWhereDeclared: true,
             )
         );
     }

@@ -1,4 +1,4 @@
-# Cache and logs (Symfony3 directory structure)
+# Cache and logs (Symfony directory structure)
 /var/*
 !var/.gitkeep
 
@@ -32,4 +32,4 @@
 # Static utilities
 .php_cs.cache
 cghooks.lock
-
+/.php-cs-fixer.cache

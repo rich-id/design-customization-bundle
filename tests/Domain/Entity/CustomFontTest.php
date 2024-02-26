@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Tests\Domain\Entity;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\DesignCustomizationBundle\Domain\Entity\CustomFont;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\Domain\Entity\CustomFont
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\Domain\Entity\CustomFont */
+#[TestConfig('fixtures')]
 final class CustomFontTest extends TestCase
 {
     public function testFontFamilyUnique(): void

@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace RichId\DesignCustomizationBundle\Tests\UserInterface\RestController;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\ControllerTestCase;
 use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\UserInterface\RestController\GetConfigurationsRoute
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\UserInterface\RestController\GetConfigurationsRoute */
+#[TestConfig('fixtures')]
 final class GetConfigurationsRouteTest extends ControllerTestCase
 {
     public function testGetCustomImageAbsoluteUrl(): void

@@ -118,7 +118,7 @@ final class CssHexadecimalOpacityHelperTest extends TestCase
     public function testHelperOpacityLessThan0(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectDeprecationMessage('Opacity must between 0 and 100.');
+        $this->expectExceptionMessage('Opacity must between 0 and 100.');
 
         CssHexadecimalOpacityHelper::getSuffixFor(-1);
     }
@@ -126,7 +126,7 @@ final class CssHexadecimalOpacityHelperTest extends TestCase
     public function testHelperOpacityMoreThan100(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectDeprecationMessage('Opacity must between 0 and 100.');
+        $this->expectExceptionMessage('Opacity must between 0 and 100.');
 
         CssHexadecimalOpacityHelper::getSuffixFor(101);
     }

@@ -5,15 +5,13 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Tests\Domain\Entity;
 
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichCongress\TestTools\Helper\ForceExecutionHelper;
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
 
-/**
- * @covers \RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration
- * @TestConfig("fixtures")
- */
+/** @covers \RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration */
+#[TestConfig('fixtures')]
 final class DesignConfigurationTest extends TestCase
 {
     public function testSlugUnique(): void
