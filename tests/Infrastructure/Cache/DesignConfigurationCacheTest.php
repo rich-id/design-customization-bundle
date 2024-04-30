@@ -66,8 +66,7 @@ final class DesignConfigurationCacheTest extends TestCase
 
         $this->assertInstanceOf(DesignConfiguration::class, $configuration);
 
-        $slug = $configuration !== null ? $configuration->getSlug() : '';
-        $this->assertSame('color-primary', $slug);
+        $this->assertSame('color-primary', $configuration->getSlug());
         $this->assertArrayHasKey('design-configurations', $cache->getValues());
     }
 

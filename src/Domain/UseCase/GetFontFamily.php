@@ -20,7 +20,7 @@ class GetFontFamily
     {
         $configuration = ($this->getConfiguration)($configurationSlug);
 
-        if ($configuration->getType() !== DesignConfigurationType::FONT) {
+        if ($configuration->getType() !== DesignConfigurationType::Font) {
             return null;
         }
 

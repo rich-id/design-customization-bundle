@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Domain\Model;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
+use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
 
 final class OutputDesignConfiguration
 {
@@ -14,7 +15,7 @@ final class OutputDesignConfiguration
     /** @var string */
     public $name;
 
-    /** @var string */
+    /** @var DesignConfigurationType */
     public $type;
 
     /** @var int */

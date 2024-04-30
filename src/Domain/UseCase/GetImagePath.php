@@ -26,7 +26,7 @@ class GetImagePath
         $imageUploadsDir = $this->getParameter->getImageUploadsDir();
         $configuration = ($this->getConfiguration)($configurationSlug);
 
-        if ($configuration->getType() !== DesignConfigurationType::IMAGE || $configuration->getValueToUse() === '') {
+        if ($configuration->getType() !== DesignConfigurationType::Image || $configuration->getValueToUse() === '') {
             return null;
         }
 

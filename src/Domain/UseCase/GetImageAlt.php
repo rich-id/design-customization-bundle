@@ -20,7 +20,7 @@ class GetImageAlt
     {
         $configuration = ($this->getConfiguration)($configurationSlug);
 
-        return $configuration->getType() === DesignConfigurationType::IMAGE
+        return $configuration->getType() === DesignConfigurationType::Image
             ? ($configuration->getAccessibilityValueToUse() ?? '')
             : '';
     }
