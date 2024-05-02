@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\UserInterface\TwigExtension;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
+use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
 use RichId\DesignCustomizationBundle\Domain\Exception\NotFoundDesignConfigurationException;
 use RichId\DesignCustomizationBundle\Domain\Helper\CssHexadecimalOpacityHelper;
 use RichId\DesignCustomizationBundle\Domain\UseCase\GetConfiguration;
@@ -153,6 +154,8 @@ class DesignCustomizationExtension extends AbstractExtension
      */
     public function getDesignConfigurations($types = []): array
     {
+        $types = \array_map(DesignConfigurationType::from(...), (array) $types);
+
         return ($this->getConfigurations)($types);
     }
 
@@ -192,12 +195,12 @@ class DesignCustomizationExtension extends AbstractExtension
     /** @param string|string[] $types */
     public function hasConfigurationWithAccessibilityValue($types = []): bool
     {
+        $types = \array_map(DesignConfigurationType::from(...), (array) $types);
+
         return !empty(
             \array_filter(
                 ($this->getConfigurations)($types),
-                static function (DesignConfiguration $configuration) {
-                    return $configuration->getAccessibilityValueToUse() !== null && $configuration->getAccessibilityValueToUse() !== '';
-                }
+                static fn (DesignConfiguration $c) => $c->getAccessibilityValueToUse() !== null && $c->getAccessibilityValueToUse() !== ''
             )
         );
     }

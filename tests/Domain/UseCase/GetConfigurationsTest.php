@@ -35,10 +35,10 @@ final class GetConfigurationsTest extends TestCase
     {
         $configurations = ($this->useCase)(
             [
-                DesignConfigurationType::COLOR,
-                DesignConfigurationType::FONT,
-                DesignConfigurationType::IMAGE,
-                DesignConfigurationType::RADIUS,
+                DesignConfigurationType::Color,
+                DesignConfigurationType::Font,
+                DesignConfigurationType::Image,
+                DesignConfigurationType::Radius,
             ]
         );
 
@@ -55,7 +55,7 @@ final class GetConfigurationsTest extends TestCase
 
     public function testUseCaseFilterOnColor(): void
     {
-        $configurations = ($this->useCase)(DesignConfigurationType::COLOR);
+        $configurations = ($this->useCase)(DesignConfigurationType::Color);
 
         $this->assertIsArray($configurations);
         $this->assertCount(2, $configurations);
@@ -66,7 +66,7 @@ final class GetConfigurationsTest extends TestCase
 
     public function testUseCaseFilterOnFont(): void
     {
-        $configurations = ($this->useCase)(DesignConfigurationType::FONT);
+        $configurations = ($this->useCase)(DesignConfigurationType::Font);
 
         $this->assertIsArray($configurations);
         $this->assertCount(2, $configurations);
@@ -77,7 +77,7 @@ final class GetConfigurationsTest extends TestCase
 
     public function testUseCaseFilterOnImage(): void
     {
-        $configurations = ($this->useCase)(DesignConfigurationType::IMAGE);
+        $configurations = ($this->useCase)(DesignConfigurationType::Image);
 
         $this->assertIsArray($configurations);
         $this->assertCount(1, $configurations);
@@ -87,7 +87,7 @@ final class GetConfigurationsTest extends TestCase
 
     public function testUseCaseFilterOnRadius(): void
     {
-        $configurations = ($this->useCase)(DesignConfigurationType::RADIUS);
+        $configurations = ($this->useCase)(DesignConfigurationType::Radius);
 
         $this->assertIsArray($configurations);
         $this->assertCount(1, $configurations);

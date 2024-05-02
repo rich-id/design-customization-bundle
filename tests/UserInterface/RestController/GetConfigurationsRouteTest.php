@@ -30,7 +30,7 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                     [
                         'slug'                      => 'color-primary',
                         'name'                      => 'Primary color',
-                        'type'                      => DesignConfigurationType::COLOR,
+                        'type'                      => DesignConfigurationType::Color->value,
                         'position'                  => 1,
                         'defaultValue'              => '#ffffff',
                         'value'                     => null,
@@ -41,7 +41,7 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                     [
                         'slug'                      => 'color-secondary',
                         'name'                      => 'Secondary color',
-                        'type'                      => DesignConfigurationType::COLOR,
+                        'type'                      => DesignConfigurationType::Color->value,
                         'position'                  => 2,
                         'defaultValue'              => '#000000',
                         'value'                     => null,
@@ -52,7 +52,7 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                     [
                         'slug'                      => 'font-primary',
                         'name'                      => 'Primary font',
-                        'type'                      => DesignConfigurationType::FONT,
+                        'type'                      => DesignConfigurationType::Font->value,
                         'position'                  => 1,
                         'defaultValue'              => 'My Font',
                         'value'                     => null,
@@ -63,7 +63,7 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                     [
                         'slug'                      => 'font-custom',
                         'name'                      => 'Custom font',
-                        'type'                      => DesignConfigurationType::FONT,
+                        'type'                      => DesignConfigurationType::Font->value,
                         'position'                  => 2,
                         'defaultValue'              => 'CustomFont',
                         'value'                     => null,
@@ -74,7 +74,7 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                     [
                         'slug'                      => 'radius-items',
                         'name'                      => 'Radius items',
-                        'type'                      => DesignConfigurationType::RADIUS,
+                        'type'                      => DesignConfigurationType::Radius->value,
                         'position'                  => 1,
                         'defaultValue'              => '0',
                         'value'                     => null,
@@ -85,7 +85,7 @@ final class GetConfigurationsRouteTest extends ControllerTestCase
                     [
                         'slug'                      => 'logo',
                         'name'                      => 'Logo',
-                        'type'                      => DesignConfigurationType::IMAGE,
+                        'type'                      => DesignConfigurationType::Image->value,
                         'position'                  => 1,
                         'defaultValue'              => 'default/logo.svg',
                         'value'                     => null,

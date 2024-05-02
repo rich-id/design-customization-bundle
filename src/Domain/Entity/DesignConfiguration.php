@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
 use RichId\DesignCustomizationBundle\Infrastructure\Repository\DesignConfigurationRepository;
 
 #[ORM\Entity(repositoryClass: DesignConfigurationRepository::class)]
@@ -23,8 +24,8 @@ class DesignConfiguration
     #[ORM\Column(name: 'name', type: 'string', length: 255, unique: true, nullable: false)]
     protected string $name;
 
-    #[ORM\Column(name: 'type', type: 'DesignConfigurationType', nullable: false)]
-    protected string $type;
+    #[ORM\Column(name: 'type', enumType: DesignConfigurationType::class)]
+    protected DesignConfigurationType $type;
 
     #[ORM\Column(name: 'position', type: 'integer', nullable: false, options: ['unsigned' => true])]
     protected int $position = 0;
@@ -59,7 +60,7 @@ class DesignConfiguration
         return $this->name;
     }
 
-    public function getType(): string
+    public function getType(): DesignConfigurationType
     {
         return $this->type;
     }

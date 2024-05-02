@@ -18,7 +18,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
             [
                 'slug'                      => 'color-primary',
                 'name'                      => 'Primary color',
-                'type'                      => DesignConfigurationType::COLOR,
+                'type'                      => DesignConfigurationType::Color,
                 'position'                  => 1,
                 'defaultValue'              => '#ffffff',
                 'accessibilityDefaultValue' => '#ffffff',
@@ -32,7 +32,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
             [
                 'slug'         => 'color-secondary',
                 'name'         => 'Secondary color',
-                'type'         => DesignConfigurationType::COLOR,
+                'type'         => DesignConfigurationType::Color,
                 'position'     => 2,
                 'defaultValue' => '#000000',
                 'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
@@ -45,7 +45,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
             [
                 'slug'         => 'font-primary',
                 'name'         => 'Primary font',
-                'type'         => DesignConfigurationType::FONT,
+                'type'         => DesignConfigurationType::Font,
                 'position'     => 1,
                 'defaultValue' => 'My Font',
                 'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
@@ -58,7 +58,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
             [
                 'slug'         => 'font-custom',
                 'name'         => 'Custom font',
-                'type'         => DesignConfigurationType::FONT,
+                'type'         => DesignConfigurationType::Font,
                 'position'     => 2,
                 'defaultValue' => 'CustomFont',
                 'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
@@ -71,7 +71,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
             [
                 'slug'         => 'radius-items',
                 'name'         => 'Radius items',
-                'type'         => DesignConfigurationType::RADIUS,
+                'type'         => DesignConfigurationType::Radius,
                 'position'     => 1,
                 'defaultValue' => '0',
                 'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),
@@ -84,7 +84,7 @@ final class DesignConfigurationFixtures extends AbstractFixture
             [
                 'slug'         => 'logo',
                 'name'         => 'Logo',
-                'type'         => DesignConfigurationType::IMAGE,
+                'type'         => DesignConfigurationType::Image,
                 'position'     => 1,
                 'defaultValue' => 'default/logo.svg',
                 'dateUpdate'   => new \DateTime('2023-01-01 12:00:00'),

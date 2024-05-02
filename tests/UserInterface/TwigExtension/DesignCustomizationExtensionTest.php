@@ -98,8 +98,7 @@ final class DesignCustomizationExtensionTest extends TestCase
 
         $this->assertInstanceOf(DesignConfiguration::class, $configuration);
 
-        $slug = $configuration !== null ? $configuration->getSlug() : '';
-        $this->assertSame('color-primary', $slug);
+        $this->assertSame('color-primary', $configuration->getSlug());
     }
 
     public function testUseCaseWithoutFilter(): void

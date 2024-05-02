@@ -9,6 +9,7 @@ use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichCongress\TestTools\Helper\ForceExecutionHelper;
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
+use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
 
 /** @covers \RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration */
 #[TestConfig('fixtures')]
@@ -45,7 +46,7 @@ final class DesignConfigurationTest extends TestCase
         $this->assertSame(1, $entity->getPosition());
         $this->assertSame('color-primary', $entity->getSlug());
         $this->assertSame('Primary color', $entity->getName());
-        $this->assertSame('color', $entity->getType());
+        $this->assertSame(DesignConfigurationType::Color, $entity->getType());
         $this->assertSame('#aaaaaa', $entity->getValue());
         $this->assertSame('#ffffff', $entity->getDefaultValue());
         $this->assertInstanceOf(\DateTime::class, $entity->getDateUpdate());

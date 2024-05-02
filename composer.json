@@ -21,7 +21,6 @@
         "php": "^8.1",
         "doctrine/migrations": "^3.0",
         "doctrine/orm": "^2.7 || ^3.0",
-        "fresh/doctrine-enum-bundle": "^8.0 || ^9.0 || ^10.0",
         "richcongress/bundle-toolbox": "v2.x-dev",
         "symfony/cache": "^6.0 || ^7.0",
         "symfony/routing": "^6.0 || ^7.0",

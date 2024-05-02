@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace RichId\DesignCustomizationBundle\Domain\UseCase;
 
 use RichId\DesignCustomizationBundle\Domain\Entity\DesignConfiguration;
+use RichId\DesignCustomizationBundle\Domain\Entity\Type\DesignConfigurationType;
 use RichId\DesignCustomizationBundle\Domain\Port\GetDesignConfigurationInterface;
 
 class GetConfigurations
@@ -18,13 +19,16 @@ class GetConfigurations
     }
 
     /**
-     * @param string|string[] $types
+     * @param DesignConfigurationType|DesignConfigurationType[] $types
      *
      * @return array<string, DesignConfiguration>
      */
-    public function __invoke($types = []): array
+    public function __invoke(DesignConfigurationType|array $types = []): array
     {
-        $types = (array) $types;
+        if ($types instanceof DesignConfigurationType) {
+            $types = [$types];
+        }
+
         $configurations = $this->getEntity->getDesignConfigurations();
 
         if (empty($types)) {
@@ -33,9 +37,7 @@ class GetConfigurations
 
         return \array_filter(
             $configurations,
-            static function (DesignConfiguration $designConfiguration) use ($types) {
-                return \in_array($designConfiguration->getType(), $types, true);
-            }
+            static fn (DesignConfiguration $dc) => \in_array($dc->getType(), $types, true)
         );
     }
 }
