@@ -37,7 +37,7 @@ toc::[]
 
 == Installation
 
-This version of the bundle requires Symfony 5.4+ and PHP 8.0+.
+This version of the bundle requires Symfony 6.0+ and PHP 8.1+.
 
 [source,bash]
 ----

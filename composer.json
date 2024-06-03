@@ -21,7 +21,7 @@
         "php": "^8.1",
         "doctrine/migrations": "^3.0",
         "doctrine/orm": "^2.7 || ^3.0",
-        "richcongress/bundle-toolbox": "v2.x-dev",
+        "richcongress/bundle-toolbox": "^2.0",
         "symfony/cache": "^6.0 || ^7.0",
         "symfony/routing": "^6.0 || ^7.0",
         "symfony/security-bundle": "^6.0 || ^7.0",
@@ -31,8 +31,8 @@
     "require-dev": {
         "doctrine/doctrine-bundle": "^2.0",
         "phpunit/phpunit": "^9.5",
-        "richcongress/static-analysis": "v0.2.x-dev",
-        "richcongress/test-suite": "v0.2.x-dev",
+        "richcongress/static-analysis": "^0.2",
+        "richcongress/test-suite": "^0.2",
         "roave/security-advisories": "dev-latest"
     },
     "autoload": {
