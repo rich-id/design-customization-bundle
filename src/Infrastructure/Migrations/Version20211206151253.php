@@ -9,6 +9,11 @@ use Doctrine\Migrations\AbstractMigration;
 
 class Version20211206151253 extends AbstractMigration
 {
+    public function isTransactional(): bool
+    {
+        return false;
+    }
+
     public function up(Schema $schema): void
     {
         $this->addSql('ALTER TABLE module_design_customization_configuration ADD accessibility_default_value VARCHAR(600) DEFAULT NULL, ADD accessibility_value VARCHAR(600) DEFAULT NULL');
